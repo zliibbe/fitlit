@@ -56,11 +56,11 @@ describe('User Repository', () => {
   }) 
 
   it('should be a function', function() {
-    expect(userRepository).to.be.a('function');
+    expect(UserRepository).to.be.a('function');
   });
 
   it('should be able to take in a collection of users', function () {
-    expect(userRepository.users).to.be.a('object');
+    expect(userRepository.users).to.be.a('array');
   })
 
   it('should be able to take in a specific dataset of users', function () {
@@ -74,6 +74,6 @@ describe('User Repository', () => {
 
   it('should have a method that calculates the average step goal amongst all users', function() {
     expect(userRepository.getAvgStepGoal()).to.not.eql(20000);
-    expect(userRepository.getAvgStepGoal()).to.be.eql(6666.67);
+    expect(userRepository.getAvgStepGoal()).to.be.eql(6666.666666666667);
   })
 })
