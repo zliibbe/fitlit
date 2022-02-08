@@ -7,9 +7,6 @@ describe('User', () => {
   let user;
 
   beforeEach(() => {
-    user = new User(userData);
-  });
-
     testUsers = [
       {
         "id": 1,
@@ -53,22 +50,26 @@ describe('User', () => {
         ]
       }];
 
+    user = new User(testUsers[0]);
+  });
+
+
   it('should be a function', function() {
-    expect(user).to.be.a('function')
+    expect(User).to.be.a('function')
   })
 
   it('should have a parameter to take in a userData object', function() {
-    expect(user).to.equal(testUsers[0])
+    expect(user).to.eql(testUsers[0])
   })
 
   it('should hold the user properties from the data file', function() {
-    expect(user.id).to.equal(1);
-    expect(user.name).to.equal('Luisa Hane');
-    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
-    expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
-    expect(user.strideLength).to.equal(4.3);
-    expect(user.dailyStepGoal).to.equal(10000);
-    expect(user.friends).to.equal([16, 4, 8]);
+    expect(user.id).to.eql(1);
+    expect(user.name).to.eql('Luisa Hane');
+    expect(user.address).to.eql('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+    expect(user.email).to.eql('Diana.Hayes1@hotmail.com');
+    expect(user.strideLength).to.eql(4.3);
+    expect(user.dailyStepGoal).to.eql(10000);
+    expect(user.friends).to.eql([16, 4, 8]);
   })
 
   it('should have a method that returns a users first name only', function() {
