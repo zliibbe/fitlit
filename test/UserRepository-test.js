@@ -4,7 +4,11 @@ import UserRepository from '../src/UserRepository';
 
 describe('User Repository', () => {
   let testUsers;
+  let userRepository;
+
   beforeEach(() => {
+    userRepository = new UserRepository();
+    
     testUsers = [
       {
         "id": 1,
@@ -50,24 +54,24 @@ describe('User Repository', () => {
   }) 
 
   it('should be a function', function () {
-    expect(UserRepository).to.be.a('function');
+    expect(userRepository).to.be.a('function');
   });
 
   it('should put able to take in a collection of users', function () {
-    expect(UserRepository.users).to.be.a('object');
+    expect(userRepository.users).to.be.a('object');
   })
 
   it('should be able to take in a specific dataset of users', function () {
-    expect(UserRepository.users).to.be.eql(testUsers);
+    expect(userRepository.users).to.be.eql(testUsers);
   });
 
   it('should have a method to return the user data based on the user ID', function() {
-    expect(UserRepository.getUser(1)).to.not.eql(testUsers[1]);
-    expect(UserRepository.getUser(1)).to.be.eql(testUsers[0]);
+    expect(userRepository.getUser(1)).to.not.eql(testUsers[1]);
+    expect(userRepository.getUser(1)).to.be.eql(testUsers[0]);
   })
 
   it('should have a method that calculates the average step goal amongst all users', function() {
-    expect(UserRepository.getAvgStepGoal()).to.not.eql(20000);
-    expect(UserRepository.getAvgStepGoal()).to.be.eql(6666.67);
+    expect(userRepository.getAvgStepGoal()).to.not.eql(20000);
+    expect(userRepository.getAvgStepGoal()).to.be.eql(6666.67);
   })
 }
