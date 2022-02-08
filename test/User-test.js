@@ -70,4 +70,8 @@ describe('User', () => {
     expect(user.dailyStepGoal).to.equal(10000);
     expect(user.friends).to.equal([16, 4, 8]);
   })
+
+  it('should have a method that returns a users first name only', function() {
+    expect(user.returnFirstName()).to.equal('Luisa');
+  })
 })
