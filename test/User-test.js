@@ -60,4 +60,14 @@ describe('User', () => {
   it('should have a parameter to take in a userData object', function() {
     expect(user).to.equal(testUsers[0])
   })
+
+  it('should hold the user properties from the data file', function() {
+    expect(user.id).to.equal(1);
+    expect(user.name).to.equal('Luisa Hane');
+    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+    expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
+    expect(user.strideLength).to.equal(4.3);
+    expect(user.dailyStepGoal).to.equal(10000);
+    expect(user.friends).to.equal([16, 4, 8]);
+  })
 })
