@@ -54,8 +54,10 @@ describe('User', () => {
       }];
 
   it('should be a function', function() {
-    expect.user.to.be.a('function')
+    expect(user).to.be.a('function')
   })
 
-  
+  it('should have a parameter to take in a userData object', function() {
+    expect(user).to.equal(testUsers[0])
+  })
 })
