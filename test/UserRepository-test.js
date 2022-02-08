@@ -7,7 +7,6 @@ describe('User Repository', () => {
   let userRepository;
 
   beforeEach(() => {
-    userRepository = new UserRepository();
     
     testUsers = [
       {
@@ -51,13 +50,15 @@ describe('User Repository', () => {
           33
         ]
       }]
+
+    userRepository = new UserRepository(testUsers);
   }) 
 
-  it('should be a function', function () {
+  it('should be a function', function() {
     expect(userRepository).to.be.a('function');
   });
 
-  it('should put able to take in a collection of users', function () {
+  it('should be able to take in a collection of users', function () {
     expect(userRepository.users).to.be.a('object');
   })
 
@@ -66,12 +67,12 @@ describe('User Repository', () => {
   });
 
   it('should have a method to return the user data based on the user ID', function() {
-    expect(userRepository.getUser(1)).to.not.eql(testUsers[1]);
-    expect(userRepository.getUser(1)).to.be.eql(testUsers[0]);
+    expect(userRepository.getUserId(1)).to.not.eql(testUsers[1]);
+    expect(userRepository.getUserId(1)).to.be.eql(testUsers[0]);
   })
 
   it('should have a method that calculates the average step goal amongst all users', function() {
     expect(userRepository.getAvgStepGoal()).to.not.eql(20000);
     expect(userRepository.getAvgStepGoal()).to.be.eql(6666.67);
   })
-}
+})
