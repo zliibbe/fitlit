@@ -52,4 +52,10 @@ describe('User', () => {
           33
         ]
       }];
+
+  it('should be a function', function() {
+    expect.user.to.be.a('function')
+  })
+
+  
 })
