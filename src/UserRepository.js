@@ -7,12 +7,16 @@ class UserRepository {
     });
   }
 
-  getUserId() {
-
+  getUserId(id) {
+    return this.users.find(user => user.id)
   }
 
   getAvgStepGoal() {
-
+    const usersStepGoals = this.users.map(user => user.dailyStepGoal);
+    const totalStepsGoal = usersStepGoals.reduce((init, curr) => {
+      return (init + curr)
+    })
+    return totalStepsGoal / this.users.length
   }
 }
 
