@@ -5,8 +5,77 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <nav>
+      <section class="user">
+        <p id="user-icon">test</p>
+        <p id="user-id">test</p>
+        <p id="user-name">test</p>
+        <p id="user-address">test</p>
+        <p id="user-email">test</p>
+        <p id="user-stride-length">test</p>
+        <p id="user-daily-step-goal">test</p>
+        <p id="user-friends">test</p>
+      </section>
+      <h1>Activity Tracker</h1>
+    </nav>
+    <section id="sleep" class="dropdown">
+      <div class="dropdown-content">
+        <p>Sleep</p>
+        <div>
+          <p id="daily-sleep">daily</p>
+          <section id="daily-sleep-quality-data">
+            <p></p>
+          </section>
+          <section id="daily-sleep-quantity-data">
+            <p></p>
+          </section>
+          <p id="weekly-sleep">weekly</p>
+          <section id="weekly-sleep-quality-data">
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+            <p class="weekly-sleep-quality-data"></p>
+          </section>
+          <section id="weekly-sleep-quantity-data">
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p class="weekly-sleep-quantity-data"></p>
+            <p></p>
+          </section>
+        </div>
+      </div>
+    </section>
+    <secton id="hydration" class="dropdown">
+      <div class="dropdown-content">
+        <p>Hydration</p>
+          <div>
+            <p id="daily-hydration">daily</p>
+            <section id="daily-hydration-data">
+              <p class="daily-hydration-data"></p>
+            </section>
+            <p id="weekly-hydration">weekly</p>
+            <section id="weekly-hydration-data">
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+              <p class="weekly-hydration-data"></p>
+            </section>
+          </div>
+        <p id="hydration-data"></p>
+      </div>
+    </section>
+
+
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
