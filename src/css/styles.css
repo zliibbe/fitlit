@@ -6,8 +6,14 @@ body, html {
 }
 
 /* ***** nav ***** */
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
 
 .user {
+  width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -17,9 +23,11 @@ body, html {
 
 main {
   width: 100%;
+  height: 50%;
   display:flex;
   flex-direction: column;
   align-content: center;
+  justify-content: space-around;
 }
 
 
