@@ -6,21 +6,26 @@
   </head>
   <body>
     <nav>
-      <section class="user">
-        <p id="user-icon">test</p>
-        <p id="user-id">test</p>
-        <p id="user-name">test</p>
-        <p id="user-address">test</p>
-        <p id="user-email">test</p>
-        <p id="user-stride-length">test</p>
-        <p id="user-daily-step-goal">test</p>
-        <p id="user-friends">test</p>
-      </section>
       <h1>Activity Tracker</h1>
+      <section class="user">
+        <p id="user-icon">icon</p>
+        <p id="user-name">name</p>
+        <p id="user-daily-step-goal">daily step goal</p>
+        <section class="dropdown">
+          <p id="more-info">...</p>
+          <div class="dropdown-content">
+            <p id="user-id">id</p>
+            <p id="user-address">address</p>
+            <p id="user-email">email</p>
+            <p id="user-stride-length">stride length</p>
+            <p id="user-friends">friends</p>
+          </div>
+        </section>
+      </section>
     </nav>
     <main>
-      <section id="sleep" class="dropdown">
-        <p>Sleep</p>
+      <section  class="dropdown">
+        <p id="sleep">Sleep</p>
         <div class="dropdown-content">
           <div>
             <p id="daily-sleep">daily</p>
@@ -53,8 +58,8 @@
           </div>
         </div>
       </section>
-      <secton id="hydration" class="dropdown">
-        <p>Hydration</p>
+      <secton class="dropdown">
+        <p id="hydration">Hydration</p>
         <div class="dropdown-content">
             <div>
               <p id="daily-hydration">daily</p>
