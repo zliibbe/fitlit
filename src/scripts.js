@@ -6,7 +6,8 @@ console.log(userData,"<>>>>userData")
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/turing-logo.png';
+import './apiCalls.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -40,6 +41,13 @@ let allUsers = new UserRepository(userData);
 
 
 //functions
+
+
+const getData = () => {
+  let promises = Promise.all([fetchUserData(), fetchSleepData(),fetchhydrationData(),
+  fetchActivityData()]).then(data => {buildDom(data)})
+}
+
 const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
@@ -50,7 +58,7 @@ const loadUserInfo = () => {
 
     // let randomUser = userData[randomIndex];
     generateUserInfoCard(luisa);
-    
+
 }
 
 const generateUserInfoCard = (user) => {
@@ -83,5 +91,5 @@ moreInfoBtn.addEventListener('click', infoButton)
 /*
 • Create an info card on the dashboard with all of user’s info on the page
 • Display their first name somewhere prominently on the page to welcome them
-• For a specific user, display how their step goal compares to the average step 
+• For a specific user, display how their step goal compares to the average step
 goal amongst all users (this display should not be hard-coded)*/
