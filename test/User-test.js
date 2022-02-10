@@ -1,14 +1,12 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import User from "../src/User";
+import User from '../src/User';
 
-
-describe('User Repository', () => {
+describe('User', () => {
   let testUsers;
-  let userRepository;
+  let user;
 
   beforeEach(() => {
-    
     testUsers = [
       {
         "id": 1,
@@ -50,30 +48,31 @@ describe('User Repository', () => {
           42,
           33
         ]
-      }]
+      }];
 
-    userRepository = new UserRepository(testUsers);
-  }) 
+    user = new User(testUsers[0]);
+  });
+
 
   it('should be a function', function() {
-    expect(UserRepository).to.be.a('function');
-  });
-
-  it('should be able to take in a collection of users', function () {
-    expect(userRepository.users).to.be.a('array');
+    expect(User).to.be.a('function')
   })
 
-  it('should be able to take in a specific dataset of users', function () {
-    expect(userRepository.users).to.be.eql(testUsers);
-  });
-
-  it('should have a method to return the user data based on the user ID', function() {
-    expect(userRepository.getUserId(1)).to.not.eql(testUsers[1]);
-    expect(userRepository.getUserId(1)).to.be.eql(testUsers[0]);
+  it('should have a parameter to take in a userData object', function() {
+    expect(user).to.eql(testUsers[0])
   })
 
-  it('should have a method that calculates the average step goal amongst all users', function() {
-    expect(userRepository.getAvgStepGoal()).to.not.eql(20000);
-    expect(userRepository.getAvgStepGoal()).to.be.eql(6666.666666666667);
+  it('should hold the user properties from the data file', function() {
+    expect(user.id).to.eql(1);
+    expect(user.name).to.eql('Luisa Hane');
+    expect(user.address).to.eql('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+    expect(user.email).to.eql('Diana.Hayes1@hotmail.com');
+    expect(user.strideLength).to.eql(4.3);
+    expect(user.dailyStepGoal).to.eql(10000);
+    expect(user.friends).to.eql([16, 4, 8]);
+  })
+
+  it('should have a method that returns a users first name only', function() {
+    expect(user.returnFirstName()).to.equal('Luisa');
   })
 })
