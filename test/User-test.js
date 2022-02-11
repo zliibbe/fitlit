@@ -82,13 +82,21 @@ describe('User', () => {
     beforeEach(() => {
       testHydration = [
         { "userID": 1, "date": "2019/06/15", "numOunces": 37 },
-        { "userID": 2, "date": "2019/06/15", "numOunces": 75 },
-        { "userID": 3, "date": "2019/06/15", "numOunces": 47 }
+        { "userID": 1, "date": "2019/06/16", "numOunces": 75 },
+        { "userID": 1, "date": "2019/06/17", "numOunces": 47 },
+        { "userID": 1, "date": "2019/06/18", "numOunces": 85 },
+        { "userID": 1, "date": "2019/06/19", "numOunces": 42 },
+        { "userID": 1, "date": "2019/06/20", "numOunces": 87 },
+        { "userID": 1, "date": "2019/06/21", "numOunces": 94 }
       ]
   })
 
     it('should have a method that calculates total average water consumed', function() {
-      expect(user.totalAvgWater()).to.equal(159)
+      expect(user.totalAvgWater()).to.equal(66.7142857)
+    })
+
+    it('should have a method that calculates daily average water consumed', function() {
+      expect(user.dailyWater()).to.equal(66.7142857)
     })
 })
 
