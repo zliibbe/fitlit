@@ -3,7 +3,14 @@ import UserRepository from '../src/UserRepository';
 import User from '../src/User';
 import Hydration from '../src/Hydration';
 
+describe('Hydration', () => {
+  let testHydration;
+  let hydration;
 
+  beforeEach(() => {
+    
+  })
+})
 
 // Hydration should be a class
   //  Hydration should take in user id as the parameter
