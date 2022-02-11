@@ -44,8 +44,4 @@ describe('Hydration', () => {
   it('should have a parameter that is a user id', () => {
     expect(hydration.userID).to.equal(1)
   })
-
-  it('should have a method that filters by id', () => {
-    expect(hydration.filterByUser(1)).to.eql({ "userID": 1, "date": "2019/06/15", "numOunces": 37 })
-  })
 })
