@@ -20,6 +20,10 @@ describe('Hydration', () => {
     expect(Hydration).to.be.a('function')
   })
 
+  it('should have a parameter that is a user id', () => {
+    expect(hydration.userID).to.equal(1)
+  })
+
 })
 
 // Hydration should be a class DONE
