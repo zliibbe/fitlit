@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import User from '../src/User';
+import Hydration from '../src/Hydration';
 
 describe('User', () => {
   let testUsers;
@@ -102,8 +103,5 @@ describe('User', () => {
     it('should have a method that calculated weekly average water consumed', function() {
       expect(user.weeklyAvgWater().to.equal(66.7142857))
     })
+  })
 })
-
-//  Hydration should have a method that calculates total average water consumed
-//  Hydration should have a method that calculates daily average water consumed
-//  Hydration should have a method that calculated weekly average water consumed
