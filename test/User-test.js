@@ -78,7 +78,7 @@ describe('User', () => {
 
   describe('Hydration', () => {
     let testHydration;
-    
+
     beforeEach(() => {
       testHydration = [
         { "userID": 1, "date": "2019/06/15", "numOunces": 37 },
@@ -86,6 +86,10 @@ describe('User', () => {
         { "userID": 3, "date": "2019/06/15", "numOunces": 47 }
       ]
   })
+
+    it('should have a method that calculates total average water consumed', function() {
+      expect(user.totalAvgWater()).to.equal(159)
+    })
 })
 
 //  Hydration should have a method that calculates total average water consumed
