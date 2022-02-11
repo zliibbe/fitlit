@@ -13,12 +13,16 @@ describe('Hydration', () => {
       { "userID": 2, "date": "2019/06/15", "numOunces": 75 }, 
       { "userID": 3, "date": "2019/06/15", "numOunces": 47 }
   ]
-  });
-  
   hydration = new Hydration();
+  });
+
+  it('should be a function', () => {
+    expect(Hydration).to.be.a('function')
+  })
+
 })
 
-// Hydration should be a class
+// Hydration should be a class DONE
   //  Hydration should take in user id as the parameter
 //  Hydration should have a method that calculates total average water consumed
 //  Hydration should have a method that calculates daily average water consumed
