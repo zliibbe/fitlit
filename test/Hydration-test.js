@@ -5,19 +5,40 @@ import Hydration from '../src/Hydration';
 
 describe('Hydration', () => {
   let testHydration;
+  let user1Hydration;
   let hydration;
 
   beforeEach(() => {
     testHydration = [
       { "userID": 1, "date": "2019/06/15", "numOunces": 37 }, 
       { "userID": 2, "date": "2019/06/15", "numOunces": 75 }, 
-      { "userID": 3, "date": "2019/06/15", "numOunces": 47 }
-  ]
-  hydration = new Hydration();
+      { "userID": 3, "date": "2019/06/15", "numOunces": 47 },
+      { "userID": 1, "date": "2019/06/16", "numOunces": 75 },
+      { "userID": 1, "date": "2019/06/17", "numOunces": 47 },
+      { "userID": 1, "date": "2019/06/18", "numOunces": 85 },
+      { "userID": 1, "date": "2019/06/19", "numOunces": 42 },
+      { "userID": 1, "date": "2019/06/20", "numOunces": 87 },
+      { "userID": 1, "date": "2019/06/21", "numOunces": 94 }
+  ];
+      user1Hydration = [
+        { "userID": 1, "date": "2019/06/15", "numOunces": 37 },
+        { "userID": 1, "date": "2019/06/16", "numOunces": 75 },
+        { "userID": 1, "date": "2019/06/17", "numOunces": 47 },
+        { "userID": 1, "date": "2019/06/18", "numOunces": 85 },
+        { "userID": 1, "date": "2019/06/19", "numOunces": 42 },
+        { "userID": 1, "date": "2019/06/20", "numOunces": 87 },
+        { "userID": 1, "date": "2019/06/21", "numOunces": 94 }
+      ];
+
+  hydration = new Hydration(testHydration, 1);
   });
 
   it('should be a function', () => {
     expect(Hydration).to.be.a('function')
+  })
+
+  it('should be able to take in an array of objects that is hydrationData', () => {
+    expect(hydration.hydrationData).to.eql(user1Hydration)
   })
 
   it('should have a parameter that is a user id', () => {
@@ -27,22 +48,4 @@ describe('Hydration', () => {
   it('should have a method that filters by id', () => {
     expect(hydration.filterByUser(1)).to.eql({ "userID": 1, "date": "2019/06/15", "numOunces": 37 })
   })
-
 })
-
-// Hydration should be a class DONE
-  //  Hydration should take in user id as the parameter DONE
-//  Hydration should have a method that calculates total average water consumed
-//  Hydration should have a method that calculates daily average water consumed
-//  Hydration should have a method that calculated weekly average water consumedIteration 3 - Hydration
-
-
-// Data
-// Create classes and methods that can calculate:
-
-// For a user(identified by their userID - this is the same for all methods requiring a specific user’s data), the average fluid ounces consumed per day for all time
-// For a user, how many fluid ounces they consumed for a specific day(identified by a date)
-// For a user, how many fluid ounces of water consumed each day over the course of a week(7 days) - return the amount for each day
-// You have to decide which classes should contain each method.Think about whose responsibility it is to own the method.
-
-
