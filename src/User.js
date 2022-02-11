@@ -13,6 +13,13 @@ class User {
     const name = this.name.split(' ');
     return name[0];
   }
+
+  totalAvgWater(hydration) {
+    let totalOunces = hydration.hydrationData.reduce((acc, x) => {
+      return acc + x.numOunces
+    }, 0)
+    return totalOunces / hydration.hydrationData.length
+  }
 }
 
 export default User;

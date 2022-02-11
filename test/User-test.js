@@ -79,6 +79,7 @@ describe('User', () => {
 
   describe('Hydration', () => {
     let testHydration;
+    let hydration;
 
     beforeEach(() => {
       testHydration = [
@@ -89,19 +90,21 @@ describe('User', () => {
         { "userID": 1, "date": "2019/06/19", "numOunces": 42 },
         { "userID": 1, "date": "2019/06/20", "numOunces": 87 },
         { "userID": 1, "date": "2019/06/21", "numOunces": 94 }
-      ]
+      ];
+
+      hydration = new Hydration(testHydration, 1);
   })
 
     it('should have a method that calculates total average water consumed', function() {
-      expect(user.totalAvgWater().to.equal(66.7142857))
+      expect(user.totalAvgWater(hydration)).to.equal(66.71428571428571)
     })
 
     it('should have a method that calculates daily average water consumed', function() {
-      expect(user.dailyWater().to.equal(66.7142857))
+      expect(user.dailyWater()).to.equal(66.71428571428571)
     })
 
     it('should have a method that calculated weekly average water consumed', function() {
-      expect(user.weeklyAvgWater().to.equal(66.7142857))
+      expect(user.weeklyAvgWater()).to.equal(66.71428571428571)
     })
   })
 })
