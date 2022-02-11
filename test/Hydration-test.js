@@ -24,10 +24,14 @@ describe('Hydration', () => {
     expect(hydration.userID).to.equal(1)
   })
 
+  it('should have a method that filters by id', () => {
+    expect(hydration.filterByUser(1)).to.eql({ "userID": 1, "date": "2019/06/15", "numOunces": 37 })
+  })
+
 })
 
 // Hydration should be a class DONE
-  //  Hydration should take in user id as the parameter
+  //  Hydration should take in user id as the parameter DONE
 //  Hydration should have a method that calculates total average water consumed
 //  Hydration should have a method that calculates daily average water consumed
 //  Hydration should have a method that calculated weekly average water consumedIteration 3 - Hydration
