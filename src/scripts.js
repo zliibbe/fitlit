@@ -1,13 +1,13 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-console.log(userData,"<>>>>userData")
+// console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-import './apiCalls.js';
+import {fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -36,29 +36,49 @@ let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 
 //data
-let allUsers = new UserRepository(userData);
+// let allUsers = new UserRepository(userData);
 
 
 
 //functions
 
 
-const getData = () => {
-  let promises = Promise.all([fetchUserData(), fetchSleepData(),fetchhydrationData(),
-  fetchActivityData()]).then(data => {buildDom(data)})
-}
+// const getData = () => {
+//   let promises = Promise.all([fetchUserData(), fetchSleepData(),fetchhydrationData(),
+//   fetchActivityData()]).then(data => console.log(data)})
+// }
+// console.log(fetchUserData());
+// console.log(users);
+// getData();
+
+let allUsers;
+let luisa;
 
 const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
 
 const loadUserInfo = () => {
+
     // let randomIndex = getRandomNumber(userData)
-    let luisa  = allUsers.users[0];
+    fetchData().then(data => {
+      allUsers = new UserRepository(data[0].userData)
+      luisa = allUsers.users[0]
+      console.log(allUsers.users[0])
+      generateUserInfoCard(luisa)
+    })
+
+    console.log(allUsers)
+
 
     // let randomUser = userData[randomIndex];
-    generateUserInfoCard(luisa);
+    // generateUserInfoCard(luisa);
 
+
+}
+
+const fetchData = () => {
+  return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
 }
 
 const generateUserInfoCard = (user) => {
