@@ -18,7 +18,7 @@ class User {
     let totalOunces = hydration.hydrationData.reduce((acc, x) => {
       return acc + x.numOunces
     }, 0)
-    return totalOunces / hydration.hydrationData.length
+    return Math.round(totalOunces / hydration.hydrationData.length)
   }
 
   dailyWater(hydration, date) {
