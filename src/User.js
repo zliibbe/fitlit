@@ -29,6 +29,13 @@ class User {
     })
     return dayWater.numOunces
   }
+
+  weeklyWater(hydration, dates) {
+    let weeklyData = dates.map(date => {
+      return this.dailyWater(hydration, date)
+    })
+    return weeklyData
+  }
 }
 
 export default User;
