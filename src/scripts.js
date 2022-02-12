@@ -34,6 +34,9 @@ let userFriends = document.querySelector('#user-friends');
 let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
+let hydrationTitle = document.querySelector('#hydration');
+let hydrationDropdown = document.querySelector('#hydrationDropdown');
+
 
 //data
 // let allUsers = new UserRepository(userData);
@@ -59,7 +62,6 @@ const getRandomNumber = (array) => {
 }
 
 const loadUserInfo = () => {
-
     // let randomIndex = getRandomNumber(userData)
     fetchData().then(data => {
       allUsers = new UserRepository(data[0].userData)
@@ -67,14 +69,9 @@ const loadUserInfo = () => {
       console.log(allUsers.users[0])
       generateUserInfoCard(luisa)
     })
-
     console.log(allUsers)
-
-
     // let randomUser = userData[randomIndex];
     // generateUserInfoCard(luisa);
-
-
 }
 
 const fetchData = () => {
@@ -92,13 +89,13 @@ const generateUserInfoCard = (user) => {
     stepGoalComparison.innerText = allUsers.getAvgStepGoal();
 }
 
+const displayHydration = () => {
+    git
+}
+
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
 }
-
-// const hide = (element) => {
-//     element.classList.add("hidden");
-// }
 
 const infoButton = () => {
     toggleHidden(infoDropdownContent);
@@ -107,9 +104,9 @@ const infoButton = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
-
+hydrationTitle.addEventListener('click', displayHydration);
 /*
-• Create an info card on the dashboard with all of user’s info on the page
-• Display their first name somewhere prominently on the page to welcome them
-• For a specific user, display how their step goal compares to the average step
-goal amongst all users (this display should not be hard-coded)*/
+For your user (or any user you choose), add:
+
+A display to show how much water they have consumed today (these displays are often called “widgets” in the FE tech world)
+A display to show much water they have consumed each day over the course of the latest week*/
