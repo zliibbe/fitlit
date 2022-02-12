@@ -16,6 +16,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+import Hydration from './Hydration'
 
 //=====================================================
 //imports?
@@ -36,7 +37,7 @@ let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
 let hydrationDropdown = document.querySelector('#hydrationDropdown');
-
+let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data')
 
 //data
 // let allUsers = new UserRepository(userData);
@@ -56,26 +57,35 @@ let hydrationDropdown = document.querySelector('#hydrationDropdown');
 
 let allUsers;
 let luisa;
+let hydrationUser;
+let ourUser;
 
 const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
 
-const loadUserInfo = () => {
+const loadUserInfo = (id) => {
     // let randomIndex = getRandomNumber(userData)
     fetchData().then(data => {
-      allUsers = new UserRepository(data[0].userData)
-      luisa = allUsers.users[0]
-      console.log(allUsers.users[0])
-      generateUserInfoCard(luisa)
+      allUsers = new UserRepository(data[0].userData);
+      ourUser = allUsers.getUserId(id)
+      hydrationUser = new Hydration(data[2].hydrationData, ourUser.id)
+    //   luisa = allUsers.users[0];
+      generateUserInfoCard(ourUser);
+
+    //   allUsers.getUserId(luisa);//luisa's userID - don't need d/t ourUser
+
     })
-    console.log(allUsers)
     // let randomUser = userData[randomIndex];
     // generateUserInfoCard(luisa);
 }
 
 const fetchData = () => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+}
+
+const loadPage = () => {
+    loadUserInfo(2)
 }
 
 const generateUserInfoCard = (user) => {
@@ -89,8 +99,14 @@ const generateUserInfoCard = (user) => {
     stepGoalComparison.innerText = allUsers.getAvgStepGoal();
 }
 
+const generateHydrationCard = (hydration, user) => {
+    weeklyHydrationData.forEach(day => {
+        day.innerText = user.weeklyWater(hydration)
+    })
+}
+
 const displayHydration = () => {
-    git
+    toggleHidden(hydrationDropdown);
 }
 
 const toggleHidden = (element) => {
@@ -102,7 +118,7 @@ const infoButton = () => {
 }
 
 //eventListeners
-window.addEventListener('load', loadUserInfo)
+window.addEventListener('load', loadPage)
 moreInfoBtn.addEventListener('click', infoButton)
 hydrationTitle.addEventListener('click', displayHydration);
 /*
