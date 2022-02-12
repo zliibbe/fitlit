@@ -20,6 +20,15 @@ class User {
     }, 0)
     return totalOunces / hydration.hydrationData.length
   }
+
+  dailyWater(hydration, date) {
+    let dayWater = hydration.hydrationData.find(x => {
+      if(x.date === date) {
+        return x
+      }
+    })
+    return dayWater.numOunces
+  }
 }
 
 export default User;

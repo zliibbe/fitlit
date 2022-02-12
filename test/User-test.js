@@ -99,8 +99,8 @@ describe('User', () => {
       expect(user.totalAvgWater(hydration)).to.equal(66.71428571428571)
     })
 
-    it('should have a method that calculates daily average water consumed', function() {
-      expect(user.dailyWater()).to.equal(66.71428571428571)
+    it('should have a method that returns the daily water consumed for a specific day', function() {
+      expect(user.dailyWater(hydration, "2019/06/15")).to.equal(37)
     })
 
     it('should have a method that calculated weekly average water consumed', function() {
