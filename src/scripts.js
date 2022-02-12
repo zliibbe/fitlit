@@ -64,24 +64,23 @@ const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
 
+
+
 const loadUserInfo = (id) => {
     // let randomIndex = getRandomNumber(userData)
-    fetchData().then(data => {
-      allUsers = new UserRepository(data[0].userData);
-      ourUser = allUsers.getUserId(id)
-      hydrationUser = new Hydration(data[2].hydrationData, ourUser.id)
-    //   luisa = allUsers.users[0];
-      generateUserInfoCard(ourUser);
-
-    //   allUsers.getUserId(luisa);//luisa's userID - don't need d/t ourUser
-
-    })
     // let randomUser = userData[randomIndex];
-    // generateUserInfoCard(luisa);
+    fetchData(id);
 }
 
-const fetchData = () => {
+const fetchData = (id) => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+  .then(data => {allUsers = new UserRepository(data[0].userData);
+    hydrationUser = new Hydration(data[2].hydrationData, id); 
+   })
+  .then(() => {ourUser = allUsers.users[id]})
+  .then(() => generateUserInfoCard(ourUser),
+    generateHydrationCard(hydrationUser, ourUser))
+   
 }
 
 const loadPage = () => {
@@ -100,8 +99,8 @@ const generateUserInfoCard = (user) => {
 }
 
 const generateHydrationCard = (hydration, user) => {
-    weeklyHydrationData.forEach(day => {
-        day.innerText = user.weeklyWater(hydration)
+    weeklyHydrationData.forEach((day) => {
+        day.innerText = user.totalAvgWater(hydration)
     })
 }
 
