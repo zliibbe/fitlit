@@ -37,7 +37,9 @@ let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
 let hydrationDropdown = document.querySelector('#hydrationDropdown');
-let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data')
+let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data');
+let dailyHydrationData = document.querySelector('.daily-hydration-data');
+let allTimeAvgHydrationData = document.querySelector('.all-time-average-hydration-data')
 
 //data
 // let allUsers = new UserRepository(userData);
@@ -76,17 +78,21 @@ const fetchData = (id) => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
   .then(data => {allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id); 
+    console.log(hydrationUser);
    })
   .then(() => {ourUser = allUsers.users[id]})
-  .then(() => generateUserInfoCard(ourUser),
-    generateHydrationCard(hydrationUser, ourUser))
+  //DOM
+  .then(() => generateUserInfoCard(ourUser))
+  .then(() => generateHydrationCard(hydrationUser, ourUser))
    
 }
 
+//Data/DOM; initial function on Load
 const loadPage = () => {
     loadUserInfo(2)
 }
 
+//DOM
 const generateUserInfoCard = (user) => {
     userName.innerText = user.returnFirstName();
     userDailyStepGoal.innerText = user.dailyStepGoal;
@@ -98,10 +104,17 @@ const generateUserInfoCard = (user) => {
     stepGoalComparison.innerText = allUsers.getAvgStepGoal();
 }
 
+//DOM
 const generateHydrationCard = (hydration, user) => {
-    weeklyHydrationData.forEach((day) => {
-        day.innerText = user.totalAvgWater(hydration)
+    dailyHydrationData.innerText = user.dailyWater(hydration, "2019/06/15")
+
+    weeklyHydrationData.forEach((day, index) => {
+        day.innerText = user.weeklyWater(hydration, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21"])[index]
     })
+
+    allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
+
+    
 }
 
 const displayHydration = () => {
