@@ -18,7 +18,7 @@ describe('Sleep', () => {
       { "userID": 2, "date": "2019/06/21", "hoursSlept": 4.3, "sleepQuality": 4.8 },
       { "userID": 2, "date": "2019/06/22", "hoursSlept": 4.8, "sleepQuality": 3.3 }
     ];
-  sleep = new Sleep();
+  sleep = new Sleep(testSleep, 2);
   });
 
   it('should be a function', () => {
