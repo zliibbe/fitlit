@@ -64,8 +64,13 @@ class User {
     return Math.round(newTotal * 100) / 100
   }
 
-  dailySleepQuality() {
-
+  dailySleepQuality(testSleep, date) {
+    let dailyQuality = testSleep.find(sleepEntryObj => {
+      if (sleepEntryObj.date === date) {
+        return sleepEntryObj
+      }
+    })
+    return dailyQuality.sleepQuality
   }
 
   dailyHoursSlept() {

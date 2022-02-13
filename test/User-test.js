@@ -109,8 +109,8 @@ describe('User', () => {
     })
   })
   describe('Sleep', () => {
-    let sleep;
     let testSleep;
+    let sleep;
 
     beforeEach(() => {
       testSleep = [
@@ -129,6 +129,7 @@ describe('User', () => {
         { "userID": 1, "date": "2019/06/20", "hoursSlept": 9.3, "sleepQuality": 1.2 },
         { "userID": 1, "date": "2019/06/21", "hoursSlept": 7.8, "sleepQuality": 4.2 }
       ];
+
       sleep = new Sleep(testSleep, 2);
     });
 
@@ -141,7 +142,7 @@ describe('User', () => {
     })
 
     it('should have a method that returns the sleep quality for a specific day', () => {
-      expect(user.dailySleepQuality()).to.equal(4.7)
+      expect(user.dailySleepQuality(testSleep, "2019/06/15")).to.equal(4.7)
     })
 
     it('should have a method that returns the hours slept for a specific day', () => {

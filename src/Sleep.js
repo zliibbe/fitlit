@@ -8,4 +8,5 @@ class Sleep{
     this.userID = id;
   }
 }
+
 export default Sleep
