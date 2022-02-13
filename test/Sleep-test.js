@@ -29,4 +29,8 @@ describe('Sleep', () => {
     expect(sleep.sleepData).to.eql(testSleep)
   })
 
+  it('should have a parameter that is a user id', () => {
+    expect(sleep.userID).to.equal(2)
+  })
+
 })
