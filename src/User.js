@@ -50,8 +50,18 @@ class User {
     return total / 7
   }
 
-  avgAllTimeSleepQuality() {
-
+  avgAllTimeSleepQuality(testSleep, id) {
+    let usersTotalSleep = testSleep.filter(element => {
+      if(element.userID === id) {
+        return element
+      }
+    })
+    let total = 0;
+    usersTotalSleep.forEach(userObj => {
+      total += userObj.sleepQuality
+  })
+    let newTotal = total / usersTotalSleep.length
+    return Math.round(newTotal * 100) / 100
   }
 
   dailySleepQuality() {

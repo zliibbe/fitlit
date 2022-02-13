@@ -137,7 +137,7 @@ describe('User', () => {
     })
 
     it('should have a method that calculates the average sleep quality per day over all time', () => {
-      expect(user.avgAllTimeSleepQuality()).to.equal(3.61428571)
+      expect(user.avgAllTimeSleepQuality(testSleep, 2)).to.equal(3.61)
     })
 
     it('should have a method that returns the sleep quality for a specific day', () => {
