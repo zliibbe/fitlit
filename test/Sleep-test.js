@@ -25,4 +25,8 @@ describe('Sleep', () => {
     expect(Sleep).to.be.a.a('function')
   })
 
+  it('should be able to take in an array of objects that is the sleepData', () => {
+    expect(sleep.sleepData).to.eql(testSleep)
+  })
+
 })
