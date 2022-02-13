@@ -37,8 +37,17 @@ class User {
     return weeklyData
   }
   
-  totalAvgDailyHoursSlept() {
-    // let totalHours = 
+  totalAvgDailyHoursSlept(testSleep, id) {
+    let hours = testSleep.filter(element => {
+      if(element.userID === id) {
+        return element
+      }
+    })
+    let total = 0;
+    hours.forEach(userObj => {
+      total += userObj.hoursSlept
+    });
+    return total / 7
   }
 
   avgAllTimeSleepQuality() {

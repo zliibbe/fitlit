@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import User from '../src/User';
 import Hydration from '../src/Hydration';
+import Sleep from '../src/Sleep';
 
 describe('User', () => {
   let testUsers;
@@ -132,7 +133,7 @@ describe('User', () => {
     });
 
     it('should have a method that returns the total daily hours slept', () => {
-      expect(user.totalAvgDailyHoursSlept()).to.equal(7.1)
+      expect(user.totalAvgDailyHoursSlept(testSleep, 2)).to.equal(7.1)
     })
 
     it('should have a method that calculates the average sleep quality per day over all time', () => {
@@ -147,7 +148,7 @@ describe('User', () => {
       expect(dailyHoursSlept()).to.equal(7)
     })
 
-    it('should have a method that displays the daily hours slept in a week' () => {
+    it('should have a method that displays the daily hours slept in a week', () => {
       expect(sevenDaysOfHoursSlept()).to.equal(7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8) 
     })
 
