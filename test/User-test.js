@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import User from '../src/User';
+import Hydration from '../src/Hydration';
 
 describe('User', () => {
   let testUsers;
@@ -74,5 +75,36 @@ describe('User', () => {
 
   it('should have a method that returns a users first name only', function() {
     expect(user.returnFirstName()).to.equal('Luisa');
+  })
+
+  describe('Hydration', () => {
+    let testHydration;
+    let hydration;
+
+    beforeEach(() => {
+      testHydration = [
+        { "userID": 1, "date": "2019/06/15", "numOunces": 37 },
+        { "userID": 1, "date": "2019/06/16", "numOunces": 75 },
+        { "userID": 1, "date": "2019/06/17", "numOunces": 47 },
+        { "userID": 1, "date": "2019/06/18", "numOunces": 85 },
+        { "userID": 1, "date": "2019/06/19", "numOunces": 42 },
+        { "userID": 1, "date": "2019/06/20", "numOunces": 87 },
+        { "userID": 1, "date": "2019/06/21", "numOunces": 94 }
+      ];
+
+      hydration = new Hydration(testHydration, 1);
+  })
+
+    it('should have a method that calculates total average water consumed', function() {
+      expect(user.totalAvgWater(hydration)).to.equal(66.71428571428571)
+    })
+
+    it('should have a method that returns the daily water consumed for a specific day', function() {
+      expect(user.dailyWater(hydration, "2019/06/15")).to.equal(37)
+    })
+
+    it('should have a method that calculated weekly water consumed', function() {
+      expect(user.weeklyWater(hydration, ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])).to.eql([37, 75, 47, 85, 42, 87, 94])
+    })
   })
 })

@@ -16,6 +16,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+import Hydration from './Hydration'
 
 //=====================================================
 //imports?
@@ -34,6 +35,11 @@ let userFriends = document.querySelector('#user-friends');
 let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
+let hydrationTitle = document.querySelector('#hydration');
+let hydrationDropdown = document.querySelector('#hydrationDropdown');
+let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data');
+let dailyHydrationData = document.querySelector('.daily-hydration-data');
+let allTimeAvgHydrationData = document.querySelector('.all-time-average-hydration-data')
 
 //data
 // let allUsers = new UserRepository(userData);
@@ -53,34 +59,40 @@ let stepGoalComparison = document.querySelector('#step-goal-comparison');
 
 let allUsers;
 let luisa;
+let hydrationUser;
+let ourUser;
 
 const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
 
-const loadUserInfo = () => {
 
+
+const loadUserInfo = (id) => {
     // let randomIndex = getRandomNumber(userData)
-    fetchData().then(data => {
-      allUsers = new UserRepository(data[0].userData)
-      luisa = allUsers.users[0]
-      console.log(allUsers.users[0])
-      generateUserInfoCard(luisa)
-    })
-
-    console.log(allUsers)
-
-
     // let randomUser = userData[randomIndex];
-    // generateUserInfoCard(luisa);
-
-
+    fetchData(id);
 }
 
-const fetchData = () => {
+const fetchData = (id) => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+  .then(data => {allUsers = new UserRepository(data[0].userData);
+    hydrationUser = new Hydration(data[2].hydrationData, id); 
+    console.log(hydrationUser);
+   })
+  .then(() => {ourUser = allUsers.users[id]})
+  //DOM
+  .then(() => generateUserInfoCard(ourUser))
+  .then(() => generateHydrationCard(hydrationUser, ourUser))
+   
 }
 
+//Data/DOM; initial function on Load
+const loadPage = () => {
+    loadUserInfo(2)
+}
+
+//DOM
 const generateUserInfoCard = (user) => {
     userName.innerText = user.returnFirstName();
     userDailyStepGoal.innerText = user.dailyStepGoal;
@@ -92,24 +104,37 @@ const generateUserInfoCard = (user) => {
     stepGoalComparison.innerText = allUsers.getAvgStepGoal();
 }
 
+//DOM
+const generateHydrationCard = (hydration, user) => {
+    dailyHydrationData.innerText = user.dailyWater(hydration, "2019/06/15")
+
+    weeklyHydrationData.forEach((day, index) => {
+        day.innerText = user.weeklyWater(hydration, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21"])[index]
+    })
+
+    allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
+
+    
+}
+
+const displayHydration = () => {
+    toggleHidden(hydrationDropdown);
+}
+
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
 }
-
-// const hide = (element) => {
-//     element.classList.add("hidden");
-// }
 
 const infoButton = () => {
     toggleHidden(infoDropdownContent);
 }
 
 //eventListeners
-window.addEventListener('load', loadUserInfo)
+window.addEventListener('load', loadPage)
 moreInfoBtn.addEventListener('click', infoButton)
-
+hydrationTitle.addEventListener('click', displayHydration);
 /*
-• Create an info card on the dashboard with all of user’s info on the page
-• Display their first name somewhere prominently on the page to welcome them
-• For a specific user, display how their step goal compares to the average step
-goal amongst all users (this display should not be hard-coded)*/
+For your user (or any user you choose), add:
+
+A display to show how much water they have consumed today (these displays are often called “widgets” in the FE tech world)
+A display to show much water they have consumed each day over the course of the latest week*/

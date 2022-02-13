@@ -6,11 +6,11 @@ const fetchUserData = () => {
   .then(response => response.json())}
 
 const fetchSleepData = () => {
-  fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+  return fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
   .then(response => response.json())}
 
 const fetchHydrationData = () => {
-  fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+  return fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
   .then(response => response.json())}
 
 
