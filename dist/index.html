@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Fitlit</title>
   </head>
   <body>
     <nav>
       <h1>Activity Tracker</h1>
       <section class="user">
-        <p id="user-icon">icon</p>
+        <img src="./images/user-icon.png" alt="User Icon">
         <p id="user-name">name</p>
         <p id="user-daily-step-goal">daily step goal</p>
         <p id="step-goal-comparison">step goal comparison</p>
@@ -37,7 +38,7 @@
               <p></p>
             </section>
             <p id="weekly-sleep">weekly</p>
-            <section id="weekly-sleep-quality-data">
+            <section class="weekl-view">
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
@@ -46,7 +47,7 @@
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
             </section>
-            <section id="weekly-sleep-quantity-data">
+            <section class="week-view">
               <p class="weekly-sleep-quantity-data"></p>
               <p class="weekly-sleep-quantity-data"></p>
               <p class="weekly-sleep-quantity-data"></p>
@@ -64,18 +65,26 @@
         <div class="dropdown-content hidden" id="hydrationDropdown">
             <div>
               <p id="daily-hydration">daily</p>
-              <section id="daily-hydration-data">
+              <section class="daily-hydration container">
+                <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+                  <canvas id="daily-hydration-chart"></canvas>
+                </div>
                 <p class="daily-hydration-data"></p>
               </section>
               <p id="weekly-hydration">weekly</p>
-              <section id="weekly-hydration-data">
-                <p class="weekly-hydration-data">1</p>
-                <p class="weekly-hydration-data">2</p>
-                <p class="weekly-hydration-data">3</p>
-                <p class="weekly-hydration-data">4</p>
-                <p class="weekly-hydration-data">5</p>
-                <p class="weekly-hydration-data">6</p>
-                <p class="weekly-hydration-data">7</p>
+              <section class="weekly-hydration container">
+                <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+                  <canvas id="weekly-hydration-chart"></canvas>
+                </div>
+                <section class="week-view">
+                  <p class="weekly-hydration-data">1</p>
+                  <p class="weekly-hydration-data">2</p>
+                  <p class="weekly-hydration-data">3</p>
+                  <p class="weekly-hydration-data">4</p>
+                  <p class="weekly-hydration-data">5</p>
+                  <p class="weekly-hydration-data">6</p>
+                  <p class="weekly-hydration-data">7</p>
+                </section>
               </section>
               <p id="all-time-average-hydration">average</p>
               <section id="all-time-average-hydration-data">
