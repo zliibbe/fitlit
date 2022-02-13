@@ -21,4 +21,8 @@ describe('Sleep', () => {
   sleep = new Sleep();
   });
 
+  it('should be a function', () => {
+    expect(Sleep).to.be.a.a('function')
+  })
+
 })
