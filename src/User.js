@@ -36,6 +36,34 @@ class User {
     })
     return weeklyData
   }
+  
+  totalAvgDailyHoursSlept() {
+    // let totalHours = 
+  }
+
+  avgAllTimeSleepQuality() {
+
+  }
+
+  dailySleepQuality() {
+
+  }
+
+  dailyHoursSlept() {
+
+  }
+
+  sevenDaysOfHoursSlept() {
+
+  }
+
+  sevenDaysOfSleepQuality() {
+
+  }
+
+  totalAvgSleepQuality() {
+
+  }
 }
 
 export default User;
