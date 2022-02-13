@@ -107,4 +107,56 @@ describe('User', () => {
       expect(user.weeklyWater(hydration, ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])).to.eql([37, 75, 47, 85, 42, 87, 94])
     })
   })
+  describe('Sleep', () => {
+    let sleep;
+    let testSleep;
+
+    beforeEach(() => {
+      testSleep = [
+        { "userID": 2, "date": "2019/06/15", "hoursSlept": 7, "sleepQuality": 4.7 },
+        { "userID": 2, "date": "2019/06/16", "hoursSlept": 7.5, "sleepQuality": 3.8 },
+        { "userID": 2, "date": "2019/06/17", "hoursSlept": 5.7, "sleepQuality": 3 },
+        { "userID": 2, "date": "2019/06/18", "hoursSlept": 10.8, "sleepQuality": 3.2 },
+        { "userID": 2, "date": "2019/06/19", "hoursSlept": 9.6, "sleepQuality": 2.5 },
+        { "userID": 2, "date": "2019/06/21", "hoursSlept": 4.3, "sleepQuality": 4.8 },
+        { "userID": 2, "date": "2019/06/22", "hoursSlept": 4.8, "sleepQuality": 3.3 },
+        { "userID": 1, "date": "2019/06/15", "hoursSlept": 6.1, "sleepQuality": 2.2 },
+        { "userID": 1, "date": "2019/06/16", "hoursSlept": 4.1, "sleepQuality": 3.8 },
+        { "userID": 1, "date": "2019/06/17", "hoursSlept": 8, "sleepQuality": 2.6 },
+        { "userID": 1, "date": "2019/06/18", "hoursSlept": 10.4, "sleepQuality": 3.1 },
+        { "userID": 1, "date": "2019/06/19", "hoursSlept": 10.7, "sleepQuality": 1.2 },
+        { "userID": 1, "date": "2019/06/20", "hoursSlept": 9.3, "sleepQuality": 1.2 },
+        { "userID": 1, "date": "2019/06/21", "hoursSlept": 7.8, "sleepQuality": 4.2 }
+      ];
+      sleep = new Sleep(testSleep, 2);
+    });
+
+    it('should have a method that returns the total daily hours slept', () => {
+      expect(user.totalAvgDailyHoursSlept()).to.equal(7.1)
+    })
+
+    it('should have a method that calculates the average sleep quality per day over all time', () => {
+      expect(user.totalAvgSleepQuality()).to.equal(3.61428571)
+    })
+
+    it('should have a method that returns the sleep quality for a specific day', () => {
+      expect(user.dailySleepQuality()).to.equal(4.7)
+    })
+
+    it('should have a method that returns the hours slept for a specific day', () => {
+      expect(dailyHoursSlept()).to.equal(7)
+    })
+
+    it('should have a method that displays the daily hours slept in a week' () => {
+      expect(sevenDaysOfHoursSlept()).to.equal(7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8) 
+    })
+
+    it('should have a method that displays the daily quality of hours slept in a week', () => {
+      expect(sevenDaysOfSleepQuality()).to.equal(4.7, 3.8, 3, 3.2, 2.5, 4.8, 3.3)
+    })
+
+    it('should have a method that calculates the average sleep quality for all users', () => {
+      expect(totalAvgSleepQuality()).to.equal(3.11428571)
+    })
+  })
 })
