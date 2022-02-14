@@ -6,7 +6,7 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
+import './images/user-icon.png';
 import {fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
@@ -17,6 +17,7 @@ import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration'
+import {dailyHydration, weeklyHydration} from './Chart.js'
 
 //=====================================================
 //imports?
@@ -40,6 +41,7 @@ let hydrationDropdown = document.querySelector('#hydrationDropdown');
 let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data');
 let dailyHydrationData = document.querySelector('.daily-hydration-data');
 let allTimeAvgHydrationData = document.querySelector('.all-time-average-hydration-data')
+let dailyWaterDaySelector = document.querySelector('#daily-water');
 
 //data
 // let allUsers = new UserRepository(userData);
@@ -66,7 +68,18 @@ const getRandomNumber = (array) => {
     return Math.floor(Math.random() * array.length);
 }
 
+const renderCharts = (date, dailyData, dates, weeklyData) => {
+  addDataToCharts(dailyHydration, date, dailyData)
+  addDataToCharts(weeklyHydration, dates, weeklyData)
+}
 
+const addDataToCharts = (chart, label, data) => {
+    chart.data.labels = [label];
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data = [data];
+    });
+    chart.update();
+}
 
 const loadUserInfo = (id) => {
     // let randomIndex = getRandomNumber(userData)
@@ -77,14 +90,14 @@ const loadUserInfo = (id) => {
 const fetchData = (id) => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
   .then(data => {allUsers = new UserRepository(data[0].userData);
-    hydrationUser = new Hydration(data[2].hydrationData, id); 
+    hydrationUser = new Hydration(data[2].hydrationData, id);
     console.log(hydrationUser);
    })
   .then(() => {ourUser = allUsers.users[id]})
   //DOM
   .then(() => generateUserInfoCard(ourUser))
   .then(() => generateHydrationCard(hydrationUser, ourUser))
-   
+
 }
 
 //Data/DOM; initial function on Load
@@ -106,15 +119,18 @@ const generateUserInfoCard = (user) => {
 
 //DOM
 const generateHydrationCard = (hydration, user) => {
-    dailyHydrationData.innerText = user.dailyWater(hydration, "2019/06/15")
+  let day = dailyWaterDaySelector.value
+  console.log(day)
+  let dailyWater = user.dailyWater(hydration, day)
+  dailyHydrationData.innerText = dailyWater
 
-    weeklyHydrationData.forEach((day, index) => {
-        day.innerText = user.weeklyWater(hydration, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21"])[index]
-    })
+  weeklyHydrationData.forEach((day, index) => {
+    day.innerText = user.weeklyWater(hydration, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21"])[index]
+  })
 
-    allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
+  allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
 
-    
+addDataToCharts(dailyHydration, day, dailyWater)
 }
 
 const displayHydration = () => {
@@ -129,10 +145,14 @@ const infoButton = () => {
     toggleHidden(infoDropdownContent);
 }
 
+const doTheThing = () => {
+  console.log(dailyWaterDaySelector.value)
+}
 //eventListeners
 window.addEventListener('load', loadPage)
 moreInfoBtn.addEventListener('click', infoButton)
 hydrationTitle.addEventListener('click', displayHydration);
+dailyWaterDaySelector.addEventListener('click', doTheThing)
 /*
 For your user (or any user you choose), add:
 
