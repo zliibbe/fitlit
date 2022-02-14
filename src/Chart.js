@@ -6,7 +6,7 @@ const dailyHydration = new Chart(dailyHydrationChart, {
     data: {
         labels: ['Today'],
         datasets: [{
-            label: 'Daily Water',
+            label: 'Ounces Per Day',
             data: [75],
             backgroundColor: [
                 'blue'
@@ -32,7 +32,7 @@ const weeklyHydration = new Chart(weeklyHydrationChart, {
     data: {
         labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         datasets: [{
-            label: 'Weekly Water',
+            label: 'Ounces Per Day',
             data: [75, 91, 96, 70, 76, 71, 27],
             backgroundColor: [
                 'blue'
