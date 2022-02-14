@@ -37,8 +37,8 @@ class User {
     return weeklyData
   }
   
-  totalAvgDailyHoursSlept(testSleep, id) {
-    let hours = testSleep.filter(element => {
+  totalAvgDailyHoursSlept(sleepData, id) {
+    let hours = sleepData.filter(element => {
       if(element.userID === id) {
         return element
       }
@@ -50,8 +50,8 @@ class User {
     return total / 7
   }
 
-  avgAllTimeSleepQuality(testSleep, id) {
-    let usersTotalSleep = testSleep.filter(element => {
+  avgAllTimeSleepQuality(sleepData, id) {
+    let usersTotalSleep = sleepData.filter(element => {
       if(element.userID === id) {
         return element
       }
@@ -64,8 +64,8 @@ class User {
     return Math.round(newTotal * 100) / 100
   }
 
-  dailySleepQuality(testSleep, date) {
-    let dailyQuality = testSleep.find(sleepEntryObj => {
+  dailySleepQuality(sleepData, date) {
+    let dailyQuality = sleepData.find(sleepEntryObj => {
       if (sleepEntryObj.date === date) {
         return sleepEntryObj
       }
