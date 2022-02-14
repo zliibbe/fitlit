@@ -30,7 +30,7 @@
         <p id="sleep">Sleep</p>
         <div class="dropdown-content hidden">
           <div>
-            <p id="daily-sleep">daily</p>
+
             <section id="daily-sleep-quality-data">
               <p></p>
             </section>
@@ -64,16 +64,19 @@
         <p id="hydration">Hydration</p>
         <div class="dropdown-content hidden" id="hydrationDropdown">
             <div>
-              <p id="daily-hydration">daily</p>
+              <form>
+                <label for="daily-water">Daily Water</label>
+                <input type="date" id="daily-water" name="daily-water">
+              </form>
               <section class="daily-hydration container">
-                <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+                <div class="chart-container" style="position: relative; height:10vh; width:30vw">
                   <canvas id="daily-hydration-chart"></canvas>
                 </div>
                 <p class="daily-hydration-data"></p>
               </section>
               <p id="weekly-hydration">weekly</p>
               <section class="weekly-hydration container">
-                <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+                <div class="chart-container" style="position: relative; height:10vh; width:30vw">
                   <canvas id="weekly-hydration-chart"></canvas>
                 </div>
                 <section class="week-view">
