@@ -13,6 +13,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
+//imports
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
@@ -20,8 +21,11 @@ import Hydration from './Hydration'
 import {dailyHydration, weeklyHydration} from './Chart.js'
 
 //=====================================================
-//imports?
-//variable initiation ?
+//variable initiation
+let allUsers;
+let hydrationUser;
+let ourUser;
+let ourUserID;
 
 
 //querySelectors
@@ -38,99 +42,62 @@ let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
 let hydrationDropdown = document.querySelector('#hydrationDropdown');
-let weeklyHydrationData = document.querySelectorAll('.weekly-hydration-data');
-let dailyHydrationData = document.querySelector('.daily-hydration-data');
-let allTimeAvgHydrationData = document.querySelector('.all-time-average-hydration-data')
-let dailyWaterDaySelector = document.querySelector('#daily-water');
-
-//data
-// let allUsers = new UserRepository(userData);
-
+let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 
 
 //functions
 
-
-// const getData = () => {
-//   let promises = Promise.all([fetchUserData(), fetchSleepData(),fetchhydrationData(),
-//   fetchActivityData()]).then(data => console.log(data)})
-// }
-// console.log(fetchUserData());
-// console.log(users);
-// getData();
-
-let allUsers;
-let luisa;
-let hydrationUser;
-let ourUser;
-
-const getRandomNumber = (array) => {
-    return Math.floor(Math.random() * array.length);
-}
-
-const renderCharts = (date, dailyData, dates, weeklyData) => {
-  addDataToCharts(dailyHydration, date, dailyData)
-  addDataToCharts(weeklyHydration, dates, weeklyData)
+const getRandomNumber = (num) => {
+    return Math.floor(Math.random() * num);
 }
 
 const addDataToCharts = (chart, label, data) => {
-    chart.data.labels = [label];
+    chart.data.labels = label;
     chart.data.datasets.forEach((dataset) => {
-        dataset.data = [data];
+        dataset.data = data;
     });
     chart.update();
 }
 
-const loadUserInfo = (id) => {
-    // let randomIndex = getRandomNumber(userData)
-    // let randomUser = userData[randomIndex];
-    fetchData(id);
-}
 
 const fetchData = (id) => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
-  .then(data => {allUsers = new UserRepository(data[0].userData);
+  .then(data => {
+    allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
-    console.log(hydrationUser);
    })
   .then(() => {ourUser = allUsers.users[id]})
   //DOM
   .then(() => generateUserInfoCard(ourUser))
   .then(() => generateHydrationCard(hydrationUser, ourUser))
-
 }
 
 //Data/DOM; initial function on Load
-const loadPage = () => {
-    loadUserInfo(2)
+const loadUserInfo = () => {
+  fetchData(getRandomNumber(50));
 }
 
 //DOM
 const generateUserInfoCard = (user) => {
-    userName.innerText = user.returnFirstName();
-    userDailyStepGoal.innerText = user.dailyStepGoal;
-    userID.innerText = user.id;
-    userAddress.innerText = user.address;
-    userEmail.innerText = user.email;
-    userStrideLength.innerText = user.strideLength;
-    userFriends.innerText = user.friends;
-    stepGoalComparison.innerText = allUsers.getAvgStepGoal();
+    userName.innerText += user.returnFirstName();
+    userDailyStepGoal.innerText += user.dailyStepGoal;
+    userID.innerText += user.id;
+    userAddress.innerText += user.address;
+    userEmail.innerText += user.email;
+    userStrideLength.innerText += user.strideLength;
+    userFriends.innerText += user.friends;
+    stepGoalComparison.innerText += allUsers.getAvgStepGoal();
 }
 
 //DOM
 const generateHydrationCard = (hydration, user) => {
-  let day = dailyWaterDaySelector.value
-  console.log(day)
+  let day = "2019/06/15"
+  let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
   let dailyWater = user.dailyWater(hydration, day)
-  dailyHydrationData.innerText = dailyWater
-
-  weeklyHydrationData.forEach((day, index) => {
-    day.innerText = user.weeklyWater(hydration, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21"])[index]
-  })
-
+  let weeklyWater = user.weeklyWater(hydration, week)
   allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
-
-addDataToCharts(dailyHydration, day, dailyWater)
+  addDataToCharts(dailyHydration, [day], [dailyWater])
+  addDataToCharts(weeklyHydration, week, weeklyWater)
 }
 
 const displayHydration = () => {
@@ -145,14 +112,11 @@ const infoButton = () => {
     toggleHidden(infoDropdownContent);
 }
 
-const doTheThing = () => {
-  console.log(dailyWaterDaySelector.value)
-}
 //eventListeners
-window.addEventListener('load', loadPage)
+window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
 hydrationTitle.addEventListener('click', displayHydration);
-dailyWaterDaySelector.addEventListener('click', doTheThing)
+
 /*
 For your user (or any user you choose), add:
 
