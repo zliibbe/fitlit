@@ -83,16 +83,38 @@ class User {
     return dailyHoursSlept.hoursSlept;
   }
 
-  sevenDaysOfHoursSlept() {
+  sevenDaysOfHoursSlept(sleepData, dates) {
+    let workingDates = dates
+    
+    let weekOfHoursSlept = sleepData.forEach(sleepObject => {
 
+    })
+
+    /*
+    let usersTotalSleep = sleepData.filter(element => {
+      if(element.userID === id) {
+        return element
+      }
+    })
+    let total = 0;
+    usersTotalSleep.forEach(userObj => {
+      total += userObj.sleepQuality
+  })
+    let newTotal = total / usersTotalSleep.length
+    return Math.round(newTotal * 100) / 100
+    */
   }
 
   sevenDaysOfSleepQuality() {
 
   }
 
-  totalAvgSleepQuality() {
-
+  totalAvgSleepQuality(sleepData) {
+    let sleepQualityTotal = 0;
+    let avgSleepQuality = sleepData.forEach(element => {
+      sleepQualityTotal += element.sleepQuality
+    });
+    return Math.round((sleepQualityTotal / sleepData.length)*100) / 100
   }
 }
 
