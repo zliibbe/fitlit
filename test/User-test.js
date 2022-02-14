@@ -146,19 +146,19 @@ describe('User', () => {
     })
 
     it('should have a method that returns the hours slept for a specific day', () => {
-      expect(dailyHoursSlept()).to.equal(7)
+      expect(user.dailyHoursSlept(testSleep, "2019/06/15")).to.equal(7)
     })
 
     it('should have a method that displays the daily hours slept in a week', () => {
-      expect(sevenDaysOfHoursSlept()).to.equal(7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8) 
+      expect(user.sevenDaysOfHoursSlept()).to.equal(7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8) 
     })
 
     it('should have a method that displays the daily quality of hours slept in a week', () => {
-      expect(sevenDaysOfSleepQuality()).to.equal(4.7, 3.8, 3, 3.2, 2.5, 4.8, 3.3)
+      expect(user.sevenDaysOfSleepQuality()).to.equal(4.7, 3.8, 3, 3.2, 2.5, 4.8, 3.3)
     })
 
     it('should have a method that calculates the average sleep quality for all users', () => {
-      expect(totalAvgSleepQuality()).to.equal(3.11428571)
+      expect(user.totalAvgSleepQuality()).to.equal(3.11428571)
     })
   })
 })
