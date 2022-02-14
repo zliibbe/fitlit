@@ -73,8 +73,14 @@ class User {
     return dailyQuality.sleepQuality
   }
 
-  dailyHoursSlept() {
-
+  //last available/most-recent data for that User
+  dailyHoursSlept(sleepData, date) {
+    let dailyHoursSlept = sleepData.find(sleepEntryObj => {
+      if (sleepEntryObj.date === date) {
+        return sleepEntryObj.hoursSlept
+      }
+    })
+    return dailyHoursSlept.hoursSlept;
   }
 
   sevenDaysOfHoursSlept() {
