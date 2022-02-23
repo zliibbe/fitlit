@@ -36,39 +36,27 @@ class User {
     })
     return weeklyData
   }
-  
-  totalAvgDailyHoursSlept(sleepData, id) {
-    let hours = sleepData.filter(element => {
-      if(element.userID === id) {
-        return element
-      }
-    })
-    let total = 0;
-    hours.forEach(userObj => {
-      total += userObj.hoursSlept
-    });
+
+  totalAvgDailyHoursSlept(sleepData) {
+    let total = sleepData.reduce((acc, userObj) => {
+      acc += userObj.hoursSlept
+      return acc
+    }, 0)
     return total / 7
   }
 
-  avgAllTimeSleepQuality(sleepData, id) {
-    let usersTotalSleep = sleepData.filter(element => {
-      if(element.userID === id) {
-        return element
-      }
-    })
-    let total = 0;
-    usersTotalSleep.forEach(userObj => {
-      total += userObj.sleepQuality
-  })
-    let newTotal = total / usersTotalSleep.length
-    return Math.round(newTotal * 100) / 100
+  avgAllTimeSleepQuality(sleepData) {
+    let total = sleepData.reduce((acc, userObj) => {
+      acc += userObj.sleepQuality
+      return acc
+    }, 0);
+    return Math.round((total / sleepData.length) * 100) / 100
   }
 
   dailySleepQuality(sleepData, date) {
     let dailyQuality = sleepData.find(sleepEntryObj => {
-      if (sleepEntryObj.date === date) {
-        return sleepEntryObj
-      }
+      sleepEntryObj.date === date
+      return sleepEntryObj
     })
     return dailyQuality.sleepQuality
   }
@@ -76,29 +64,33 @@ class User {
   //last available/most-recent data for that User
   dailyHoursSlept(sleepData, date) {
     let dailyHoursSlept = sleepData.find(sleepEntryObj => {
-      if (sleepEntryObj.date === date) {
-        return sleepEntryObj.hoursSlept
-      }
+      sleepEntryObj.date === date
+      return sleepEntryObj
     })
     return dailyHoursSlept.hoursSlept;
   }
 
   //input: sleepData & date range- array of date strings ><
   //output: array/object of seven days sleep quality
-  sevenDaysOfHoursSlept(sleepData, dates, id) {
-    const result = sleepData.filter({
-      if (sleepData.userID === id) {
-        if (sleepData.date === dates) {}
-      }
-    })
-    
-    
-    ((acc, date) => {
-      //key is date e.g."2019/06/15"
-      sleepData[i].sleepQuality //value of key in new object
-      return acc
-    }, [])
-    return result
+  // sevenDaysOfHoursSlept(sleepData, dates, id) {
+  //   sleepData.filter()
+  // }
+
+
+
+  // const result = sleepData.filter({
+    //   if (sleepData.userID === id) {
+    //     if (sleepData.date === dates) {}
+    //   }
+    // })
+    //
+    //
+    // ((acc, date) => {
+    //   //key is date e.g."2019/06/15"
+    //   sleepData[i].sleepQuality //value of key in new object
+    //   return acc
+    // }, [])
+    // return result
     /*
     const movieObj = () => {
   const result = beyonce.movies.reduce((acc, movie) => {
@@ -108,32 +100,32 @@ class User {
   return result
 }
      console.log(movieObj())
-    
-    */ 
+
+    */
     // let hoursSleptByDayForSeven = {};
-    
+
     // sleepData.forEach(element => {
     //     if (element.userID === id) {
-    //         sleepData.forEach(element => { 
+    //         sleepData.forEach(element => {
     //           hoursSleptByDayForSeven[element.date] = element.sleepQuality
     //         })
     //       // console.log(hoursSleptByDayForSeven)
     //       return hoursSleptByDayForSeven;
     //     }
     //   })
-    }
+    // }
 
-  sevenDaysOfSleepQuality(sleepData, startDate) {
-      // const output = sleepData.filter(data => data.userID) {
-      //   if(data.userID === this.id) {
-          
-      //   }}
+  // sevenDaysOfSleepQuality(sleepData, startDate) {
+  //     // const output = sleepData.filter(data => data.userID) {
+  //     //   if(data.userID === this.id) {
+  //
+  //     //   }}
+  //
+  //       const startDate = sleepData.findIndex(sleepEntry => sleepEntry.date === startDate) {
+  //         return sleepData.map(sleepEntry => sleepEntry.sleepQuality).slice(startDate, startDate + 7)
+  //       }
+  //     }
 
-        const startDate = sleepData.findIndex(sleepEntry => sleepEntry.date === startDate) {
-          return sleepData.map(sleepEntry => sleepEntry.sleepQuality).slice(startDate, startDate + 7)
-        }
-      }
-  
 
   totalAvgSleepQuality(sleepData) {
     let sleepQualityTotal = 0;
@@ -142,5 +134,5 @@ class User {
     });
     return Math.round((sleepQualityTotal / sleepData.length)*100) / 100
   }
-} 
+}
 export default User;
