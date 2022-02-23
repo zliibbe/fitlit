@@ -17,8 +17,9 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-import Hydration from './Hydration'
-import {dailyHydration, weeklyHydration} from './Chart.js'
+import Hydration from './Hydration';
+import Sleep from './Sleep';
+import {dailyHydration, weeklyHydration, dailySleepQual, dailySleepQuan, weeklySleepQual, weeklySleepQuan} from './Chart.js'
 
 //=====================================================
 //variable initiation
@@ -26,6 +27,7 @@ let allUsers;
 let hydrationUser;
 let ourUser;
 let ourUserID;
+let sleepUser;
 
 
 //querySelectors
@@ -43,6 +45,7 @@ let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
 let hydrationDropdown = document.querySelector('#hydrationDropdown');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
+let avgSleepDisplay = document.querySelector('#avg-sleep-data-display')
 
 
 //functions
@@ -65,11 +68,13 @@ const fetchData = (id) => {
   .then(data => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
+    sleepUser = new Sleep(data[1].sleepData, id);
    })
   .then(() => {ourUser = allUsers.users[id]})
   //DOM
   .then(() => generateUserInfoCard(ourUser))
   .then(() => generateHydrationCard(hydrationUser, ourUser))
+  .then(() => generateSleepCard(sleepUser, ourUser))
 }
 
 //Data/DOM; initial function on Load
@@ -98,6 +103,27 @@ const generateHydrationCard = (hydration, user) => {
   allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
   addDataToCharts(dailyHydration, [day], [dailyWater])
   addDataToCharts(weeklyHydration, week, weeklyWater)
+}
+
+const generateSleepCard = (sleep, user) => {
+  let day = "2019/06/15"
+  let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+  let dailySleepQuality = user.dailySleepQuality(sleep, day);
+  let dailyHoursSlept = user.dailyHoursSlept(sleep, day);
+  let weeklySleepQuality = user.getSevenDaysOfSleepQuality(sleep, week);
+  let weeklySleepQuantity = user.getSevenDaysOfSleepQuantity(sleep, week);
+  let avgSleepQuality = user.avgAllTimeSleepQuality(sleep);
+  let avgSleepQuantity = user.totalAvgDailyHoursSlept(sleep);
+  addDataToCharts(dailySleepQual, [day], [dailySleepQuality]);
+  addDataToCharts(dailySleepQuan, [day], [weeklySleepQuantity]);
+  addDataToCharts(weeklySleepQual, week, weeklySleepQuality);
+  addDataToCharts(weeklySleepQuan, week, weeklySleepQuantity);
+  avgSleepDisplay.innerHTML = `
+    <p>Average Sleep Quality</p>
+    <p>${avgSleepQuality}</p>
+    <p>Average Hours Slept per Night</p>
+    <p>${avgSleepQuantity}</p>
+  `
 }
 
 const displayHydration = () => {
