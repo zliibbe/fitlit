@@ -3,13 +3,20 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 /* ***** nav ***** */
-nav {
+.user {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  font-size: larger;
+}
+
+#more-info {
+  text-align: center;
+  padding: 0.5rem, 0.8rem 
 }
 
 nav .dropdown-content {
