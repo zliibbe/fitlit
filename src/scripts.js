@@ -79,7 +79,7 @@ const loadUserInfo = () => {
 
 //DOM
 const generateUserInfoCard = (user) => {
-    userName.innerText += user.returnFirstName();
+    userName.innerText = user.returnFirstName();
     userDailyStepGoal.innerText += user.dailyStepGoal;
     userID.innerText += user.id;
     userAddress.innerText += user.address;
