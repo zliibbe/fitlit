@@ -70,6 +70,21 @@ class User {
     return dailyHoursSlept.hoursSlept;
   }
 
+  getSevenDaysOfSleepQuantity(sleepData, dates) {
+    return sleepData.map(userObj => {
+      dates.includes(userObj.date)
+      return userObj.hoursSlept
+    })
+  }
+
+  getSevenDaysOfSleepQuality(sleepData, dates) {
+    return sleepData.map(userObj => {
+      dates.includes(userObj.date)
+      return userObj.sleepQuality
+    })
+  }
+
+
   //input: sleepData & date range- array of date strings ><
   //output: array/object of seven days sleep quality
   // sevenDaysOfHoursSlept(sleepData, dates, id) {
