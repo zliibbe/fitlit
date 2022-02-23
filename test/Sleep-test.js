@@ -51,5 +51,8 @@ describe('Sleep', () => {
   it('should have a parameter that is a user id', () => {
     expect(sleep.userID).to.equal(2)
   })
+  it('should have a method that calculates the average sleep quality for all users', () => {
+    expect(sleep.totalAvgSleepQuality()).to.equal(3.11)
+  })
 
 })
