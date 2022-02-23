@@ -38,23 +38,23 @@ class User {
   }
 
   totalAvgDailyHoursSlept(sleepData) {
-    let total = sleepData.reduce((acc, userObj) => {
+    let total = sleepData.sleepData.reduce((acc, userObj) => {
       acc += userObj.hoursSlept
       return acc
     }, 0)
-    return total / 7
+    return Math.round((total / sleepData.sleepData.length) * 100) / 100
   }
 
   avgAllTimeSleepQuality(sleepData) {
-    let total = sleepData.reduce((acc, userObj) => {
+    let total = sleepData.sleepData.reduce((acc, userObj) => {
       acc += userObj.sleepQuality
       return acc
     }, 0);
-    return Math.round((total / sleepData.length) * 100) / 100
+    return Math.round((total / sleepData.sleepData.length) * 100) / 100
   }
 
   dailySleepQuality(sleepData, date) {
-    let dailyQuality = sleepData.find(sleepEntryObj => {
+    let dailyQuality = sleepData.sleepData.find(sleepEntryObj => {
       sleepEntryObj.date === date
       return sleepEntryObj
     })
@@ -62,7 +62,7 @@ class User {
   }
 
   dailyHoursSlept(sleepData, date) {
-    let dailyHoursSlept = sleepData.find(sleepEntryObj => {
+    let dailyHoursSlept = sleepData.sleepData.find(sleepEntryObj => {
       sleepEntryObj.date === date
       return sleepEntryObj
     })
@@ -70,14 +70,14 @@ class User {
   }
 
   getSevenDaysOfSleepQuantity(sleepData, dates) {
-    return sleepData.map(userObj => {
+    return sleepData.sleepData.map(userObj => {
       dates.includes(userObj.date)
       return userObj.hoursSlept
     })
   }
 
   getSevenDaysOfSleepQuality(sleepData, dates) {
-    return sleepData.map(userObj => {
+    return sleepData.sleepData.map(userObj => {
       dates.includes(userObj.date)
       return userObj.sleepQuality
     })
