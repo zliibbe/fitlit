@@ -14,8 +14,12 @@ body, html {
   font-size: larger;
 }
 
-#user-name {
-  border: 2px, solid, red
+#user-name,
+#user-daily-step-goal,
+#step-goal-comparison {
+  padding: 0em .8em;
+  display: flex;
+  align-items: center;
 }
 
 #more-info {
@@ -32,6 +36,7 @@ nav .dropdown-content {
 .user-icon {
   height: 50px;
   width: 50px;
+  padding: .7em 1em 0 1em
 }
 
 .user {
@@ -73,6 +78,10 @@ main {
   flex-direction: row;
 }
 
+#sleep, #hydration {
+  margin: 0 0.3em 1em 1em 
+}
+
 .dropdown-arrow {
   margin: 0;
   transform: rotate(-90deg);
@@ -80,7 +89,8 @@ main {
   height: 1.2em;
   width: 1.2em;
   display: flex;
-  
+  align-items: baseline;
+  position:relative
 }
 
 .dropdown-content {
