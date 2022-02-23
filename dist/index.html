@@ -12,25 +12,28 @@
     <nav>
       <h1>HealthDash</h1>
       <section class="user">
-        <img src="./images/user-icon.png" alt="User Icon">
+        <img src="./images/user-icon.png" class="user-icon" alt="User Icon">
         <p id="user-name">Hi:  </p>
-        <p id="user-daily-step-goal">Daily Step Goal:  </p>
-        <p id="step-goal-comparison">vs. all Users:  </p>
+        <p id="user-daily-step-goal">Daily Step Goal: </p>
+        <p id="step-goal-comparison">vs. all Users: </p>
         <section class="dropdown">
           <button id="more-info">...</button>
           <div class="dropdown-content hidden" id="info-dropdown">
-            <p id="user-id">id: </p>
+            <p id="user-id">Id: </p>
             <p id="user-address">Address: </p>
             <p id="user-email">Email: </p>
             <p id="user-stride-length">Stride Length: </p>
-            <p id="user-friends">Friends: </p>
+            <p id="user-friends">Friend IDs: </p>
           </div>
         </section>
       </section>
     </nav>
     <main>
       <section class="dropdown">
-        <p id="sleep">Sleep</p>
+        <div class="sleep-dropdown">
+          <p id="sleep">Sleep</p>
+          <img src="./images/dropdown.png" class="dropdown-arrow" alt="Dropdown Arrow">
+        </div>
         <div class="dropdown-content hidden">
           <div>
             <section id="daily-sleep-quality-data">
@@ -62,7 +65,10 @@
         </div>
       </section>
       <secton class="dropdown">
-        <p id="hydration">Hydration</p>
+        <div class="hydration-dropdown">
+          <p id="hydration">Hydration</p>
+          <img src="./images/dropdown.png" class="dropdown-arrow" alt="Dropdown Arrow">
+        </div>
         <div class="dropdown-content hidden" id="hydrationDropdown">
           <div class="dropdown-container">
             <section class="daily-hydration container">
