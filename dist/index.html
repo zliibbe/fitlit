@@ -15,7 +15,7 @@
         <img src="./images/user-icon.png" class="user-icon" alt="User Icon">
         <p id="user-name">Hi:  </p>
         <p id="user-daily-step-goal">Daily Step Goal:  </p>
-        <p id="step-goal-comparison">vs. all Users:  </p>
+        <p id="step-goal-comparison">Average User Step Goal:  </p>
         <section class="dropdown">
           <button id="more-info">...</button>
           <div class="dropdown-content hidden" id="info-dropdown">
@@ -70,7 +70,7 @@
                 <label for="daily-water">Daily Water</label>
                 <input type="date" id="daily-water" name="daily-water">
               </form>
-              <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+              <div class="chart-container">
                 <canvas id="daily-hydration-chart"></canvas>
               </div>
             </section>
@@ -79,7 +79,7 @@
                 <label for="daily-water">Weekly Water</label>
                 <input type="date" id="daily-water" name="daily-water">
               </form>
-              <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+              <div class="chart-container">
                 <canvas id="weekly-hydration-chart"></canvas>
               </div>
             </section>
