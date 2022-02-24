@@ -11,13 +11,14 @@ body, html {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  font-size: larger;
+  font-size: large;
 }
 
 #user-name,
 #user-daily-step-goal,
 #step-goal-comparison {
   padding: 0em .8em;
+  width: 15%;
   display: flex;
   align-items: center;
 }
@@ -41,7 +42,7 @@ nav .dropdown-content {
 }
 
 .user {
-  width: 40%;
+  width: 60vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -76,7 +77,8 @@ main {
 
 
 #sleep, #hydration {
-  margin: 0 0.3em 1em 1em 
+  margin: .5em 0.3em 1em 1em;
+  font-size: 1.5em;
 }
 
 .dropdown-content {
@@ -101,4 +103,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.chart-container {
+  position: relative; 
+  height:40vh; 
+  width:30vw
 }
