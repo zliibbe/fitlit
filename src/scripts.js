@@ -7,7 +7,6 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/user-icon.png';
-import './images/dropdown.png';
 import {fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
@@ -42,7 +41,6 @@ let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
-let hydrationDropdown = document.querySelector('#hydrationDropdown');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 
 
@@ -101,10 +99,6 @@ const generateHydrationCard = (hydration, user) => {
   addDataToCharts(weeklyHydration, week, weeklyWater)
 }
 
-const displayHydration = () => {
-    toggleHidden(hydrationDropdown);
-}
-
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
 }
@@ -116,7 +110,7 @@ const infoButton = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
-hydrationTitle.addEventListener('click', displayHydration);
+
 
 /*
 For your user (or any user you choose), add:
