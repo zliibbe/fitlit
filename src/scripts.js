@@ -7,7 +7,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/user-icon.png';
-import {fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
+import {fetchData, userDataURL, sleepDataURL, hydrationDataURL} from './apiCalls.js';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -60,7 +60,7 @@ const addDataToCharts = (chart, label, data) => {
 
 
 const fetchData = (id) => {
-  return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+  return Promise.all([fetchData(userDataURL), fetchData(sleepDataURL), fetchData(hydrationDataURL)])
   .then(data => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
