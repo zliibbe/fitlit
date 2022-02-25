@@ -84,7 +84,7 @@ const loadUserInfo = () => {
 
 //DOM
 const generateUserInfoCard = (user) => {
-    userName.innerText += user.returnFirstName();
+    userName.innerText += user.getFirstName();
     userDailyStepGoal.innerText += user.dailyStepGoal;
     userID.innerText += user.id;
     userAddress.innerText += user.address;
@@ -98,9 +98,9 @@ const generateUserInfoCard = (user) => {
 const generateHydrationCard = (hydration, user) => {
   let day = "2019/06/15"
   let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
-  let dailyWater = user.dailyWater(hydration, day)
-  let weeklyWater = user.weeklyWater(hydration, week)
-  allTimeAvgHydrationData.innerText = user.totalAvgWater(hydration);
+  let dailyWater = user.getDailyWater(hydration, day)
+  let weeklyWater = user.getWeeklyWater(hydration, week)
+  allTimeAvgHydrationData.innerText = user.getTotalAvgWater(hydration);
   addDataToCharts(dailyHydration, [day], [dailyWater])
   addDataToCharts(weeklyHydration, week, weeklyWater)
 }
@@ -108,12 +108,12 @@ const generateHydrationCard = (hydration, user) => {
 const generateSleepCard = (sleep, user) => {
   let day = "2019/06/15"
   let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
-  let dailySleepQuality = user.dailySleepQuality(sleep, day);
-  let dailyHoursSlept = user.dailyHoursSlept(sleep, day);
+  let dailySleepQuality = user.getDailySleepQuality(sleep, day);
+  let dailyHoursSlept = user.getDailyHoursSlept(sleep, day);
   let weeklySleepQuality = user.getSevenDaysOfSleepQuality(sleep, week);
   let weeklySleepQuantity = user.getSevenDaysOfSleepQuantity(sleep, week);
-  let avgSleepQuality = user.avgAllTimeSleepQuality(sleep);
-  let avgSleepQuantity = user.totalAvgDailyHoursSlept(sleep);
+  let avgSleepQuality = user.getAvgAllTimeSleepQuality(sleep);
+  let avgSleepQuantity = user.getTotalAvgDailyHoursSlept(sleep);
   addDataToCharts(dailySleepQual, [day], [dailySleepQuality]);
   addDataToCharts(dailySleepQuan, [day], [weeklySleepQuantity]);
   addDataToCharts(weeklySleepQual, week, weeklySleepQuality);
