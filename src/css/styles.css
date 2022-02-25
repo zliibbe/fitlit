@@ -7,6 +7,10 @@ body, html {
 }
 
 /* ***** nav ***** */
+nav {
+  margin-bottom: 5%;
+}
+
 .user {
   display: flex;
   flex-direction: row-reverse;
@@ -18,7 +22,7 @@ body, html {
 #user-daily-step-goal,
 #step-goal-comparison {
   padding: 0em .8em;
-  width: 15%;
+  min-width: 15%;
   display: flex;
   align-items: center;
 }
@@ -34,18 +38,30 @@ nav .dropdown-content {
   min-height: 15vh;
 }
 
+/* .dropdown > p {
+  margin: 0
+} */
+
+#user-id, #user-address, #user-email, #user-stride-length, #user-friends {
+  margin: 1%
+}
 
 .user-icon {
   height: 50px;
   width: 50px;
-  padding: .7em 1em 0 1em
+  padding: .7em 1em .5em 1em
 }
 
 .user {
-  width: 60vw;
+  width: 80vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+button {
+  display: flex;
+  align-items: baseline;
 }
 
 /* ***** main ***** */
@@ -66,7 +82,7 @@ main {
   display: none !important;
 }
 
-.dropdown, .data {
+.dropdown {
   position: relative;
   display: inline-block;
 }
@@ -75,15 +91,35 @@ main {
   cursor: pointer;
 }
 
+.data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
 #sleep, #hydration {
   margin: .5em 0.3em 1em 1em;
-  font-size: 1.5em;
+  font-size: 2em;
+  /* display: block; */
+  flex-direction: row;
 }
 
 .dropdown-content {
+  transform: translate(50px, 5px);
+  display: flex;
+  flex-flow: column wrap;
+  position:relative;
+  background-color: #f1f1f1;
+  min-width: 80vw;
+  min-height: 40vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px
+}
+
+.data-display {
   display: block;
-  position: absolute;
+  position: relative;
   background-color: #f1f1f1;
   min-width: 80vw;
   min-height: 40vh;
@@ -103,6 +139,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+.average-hydration {
+  height: 20vh;
 }
 
 .chart-container {
