@@ -10,8 +10,8 @@ describe('Hydration', () => {
 
   beforeEach(() => {
     testHydration = [
-      { "userID": 1, "date": "2019/06/15", "numOunces": 37 }, 
-      { "userID": 2, "date": "2019/06/15", "numOunces": 75 }, 
+      { "userID": 1, "date": "2019/06/15", "numOunces": 37 },
+      { "userID": 2, "date": "2019/06/15", "numOunces": 75 },
       { "userID": 3, "date": "2019/06/15", "numOunces": 47 },
       { "userID": 1, "date": "2019/06/16", "numOunces": 75 },
       { "userID": 1, "date": "2019/06/17", "numOunces": 47 },
@@ -38,7 +38,7 @@ describe('Hydration', () => {
   })
 
   it('should be able to take in an array of objects that is hydrationData', () => {
-    expect(hydration.hydrationData).to.eql(user1Hydration)
+    expect(hydration.dataByID).to.eql(user1Hydration)
   })
 
   it('should have a parameter that is a user id', () => {

@@ -50,7 +50,7 @@ class User {
       acc += userObj.sleepQuality
       return acc
     }, 0);
-    return Math.round((total / sleepData.dataByID.length) * 100) / 100
+    return Math.round((total / sleep.dataByID.length) * 100) / 100
   }
 
   getDailySleepQuality(sleep, date) {
