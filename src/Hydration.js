@@ -1,6 +1,6 @@
 class Hydration{
   constructor(data, id) {
-    this.hydrationData = data.filter((data) => {
+    this.dataByID = data.filter((data) => {
       if(data.userID === id) {
         return data
       }
