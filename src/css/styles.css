@@ -38,10 +38,6 @@ nav .dropdown-content {
   min-height: 15vh;
 }
 
-/* .dropdown > p {
-  margin: 0
-} */
-
 #user-id, #user-address, #user-email, #user-stride-length, #user-friends {
   margin: 1%
 }
