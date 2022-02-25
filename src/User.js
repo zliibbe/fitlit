@@ -15,16 +15,16 @@ class User {
   }
 
   getTotalAvgWater(hydration) {
-    let totalOunces = hydration.hydrationData.reduce((acc, x) => {
-      return acc + x.numOunces
+    let totalOunces = hydration.dataByID.reduce((acc, hydrationObj) => {
+      return acc + hydrationObj.numOunces
     }, 0)
-    return Math.round(totalOunces / hydration.hydrationData.length)
+    return Math.round(totalOunces / hydration.dataByID.length)
   }
 
   getDailyWater(hydration, date) {
-    let dayWater = hydration.hydrationData.find(x => {
-      if(x.date === date) {
-        return x
+    let dayWater = hydration.dataByID.find(hydrationObj => {
+      if(hydrationObj.date === date) {
+        return hydrationObj
       }
     })
     return dayWater.numOunces
@@ -37,47 +37,47 @@ class User {
     return weeklyData
   }
 
-  getTotalAvgDailyHoursSlept(sleepData) {
-    let total = sleepData.dataByID.reduce((acc, userObj) => {
+  getTotalAvgDailyHoursSlept(sleep) {
+    let total = sleep.dataByID.reduce((acc, userObj) => {
       acc += userObj.hoursSlept
       return acc
     }, 0)
-    return Math.round((total / sleepData.dataByID.length) * 100) / 100
+    return Math.round((total / sleep.dataByID.length) * 100) / 100
   }
 
-  getAvgAllTimeSleepQuality(sleepData) {
-    let total = sleepData.dataByID.reduce((acc, userObj) => {
+  getAvgAllTimeSleepQuality(sleep) {
+    let total = sleep.dataByID.reduce((acc, userObj) => {
       acc += userObj.sleepQuality
       return acc
     }, 0);
     return Math.round((total / sleepData.dataByID.length) * 100) / 100
   }
 
-  getDailySleepQuality(sleepData, date) {
-    let dailyQuality = sleepData.dataByID.find(sleepEntryObj => {
+  getDailySleepQuality(sleep, date) {
+    let dailyQuality = sleep.dataByID.find(sleepEntryObj => {
       sleepEntryObj.date === date
       return sleepEntryObj
     })
     return dailyQuality.sleepQuality
   }
 
-  getDailyHoursSlept(sleepData, date) {
-    let dailyHoursSlept = sleepData.dataByID.find(sleepEntryObj => {
+  getDailyHoursSlept(sleep, date) {
+    let dailyHoursSlept = sleep.dataByID.find(sleepEntryObj => {
       sleepEntryObj.date === date
       return sleepEntryObj
     })
     return dailyHoursSlept.hoursSlept;
   }
 
-  getSevenDaysOfSleepQuantity(sleepData, dates) {
-    return sleepData.dataByID.map(userObj => {
+  getSevenDaysOfSleepQuantity(sleep, dates) {
+    return sleep.dataByID.map(userObj => {
       dates.includes(userObj.date)
       return userObj.hoursSlept
     })
   }
 
-  getSevenDaysOfSleepQuality(sleepData, dates) {
-    return sleepData.dataByID.map(userObj => {
+  getSevenDaysOfSleepQuality(sleep, dates) {
+    return sleep.dataByID.map(userObj => {
       dates.includes(userObj.date)
       return userObj.sleepQuality
     })
