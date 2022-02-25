@@ -69,8 +69,8 @@ const fetchData = (id) => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
     sleepUser = new Sleep(data[1].sleepData, id);
+    ourUser = allUsers.getUserId(id);
    })
-  .then(() => {ourUser = allUsers.users[id]})
   //DOM
   .then(() => generateUserInfoCard(ourUser))
   .then(() => generateHydrationCard(hydrationUser, ourUser))
