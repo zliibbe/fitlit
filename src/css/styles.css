@@ -3,13 +3,34 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 /* ***** nav ***** */
 nav {
+  margin-bottom: 5%;
+}
+
+.user {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  font-size: large;
+}
+
+#user-name,
+#user-daily-step-goal,
+#step-goal-comparison {
+  padding: 0em .8em;
+  min-width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+#more-info {
+  padding: 0.5rem, 0.8rem;
+  display: flex;
+  align-items: center; 
 }
 
 nav .dropdown-content {
@@ -17,16 +38,30 @@ nav .dropdown-content {
   min-height: 15vh;
 }
 
-img {
+/* .dropdown > p {
+  margin: 0
+} */
+
+#user-id, #user-address, #user-email, #user-stride-length, #user-friends {
+  margin: 1%
+}
+
+.user-icon {
   height: 50px;
   width: 50px;
+  padding: .7em 1em .5em 1em
 }
 
 .user {
-  width: 40%;
+  width: 80vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+button {
+  display: flex;
+  align-items: baseline;
 }
 
 /* ***** main ***** */
@@ -56,17 +91,44 @@ main {
   cursor: pointer;
 }
 
+.data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#sleep, #hydration {
+  margin: .5em 0.3em 1em 1em;
+  font-size: 2em;
+  /* display: block; */
+  flex-direction: row;
+}
+
 .dropdown-content {
-  display: block;
-  position: absolute;
+  transform: translate(50px, 5px);
+  display: flex;
+  flex-flow: column wrap;
+  position:relative;
   background-color: #f1f1f1;
   min-width: 80vw;
   min-height: 40vh;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  padding: 10px
 }
 
-.dropdown-container {
+.data-display {
+  display: block;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 80vw;
+  min-height: 40vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px
+}
+
+.data-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -77,4 +139,13 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+.average-hydration {
+  height: 20vh;
+}
+
+.chart-container {
+  position: relative; 
+  height:40vh; 
+  width:30vw
 }

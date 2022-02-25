@@ -41,7 +41,6 @@ let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
-let hydrationDropdown = document.querySelector('#hydrationDropdown');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 
 
@@ -79,7 +78,7 @@ const loadUserInfo = () => {
 
 //DOM
 const generateUserInfoCard = (user) => {
-    userName.innerText += user.returnFirstName();
+    userName.innerText = user.returnFirstName();
     userDailyStepGoal.innerText += user.dailyStepGoal;
     userID.innerText += user.id;
     userAddress.innerText += user.address;
@@ -100,10 +99,6 @@ const generateHydrationCard = (hydration, user) => {
   addDataToCharts(weeklyHydration, week, weeklyWater)
 }
 
-const displayHydration = () => {
-    toggleHidden(hydrationDropdown);
-}
-
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
 }
@@ -115,7 +110,7 @@ const infoButton = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
-hydrationTitle.addEventListener('click', displayHydration);
+
 
 /*
 For your user (or any user you choose), add:
