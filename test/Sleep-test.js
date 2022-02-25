@@ -48,9 +48,14 @@ describe('Sleep', () => {
     expect(sleep.dataByID).to.eql(userID2TestSleep)
   })
 
+  it('should be able to hold all the sleep data for all users', () => {
+    expect(sleep.allData).to.eql(testSleep)
+  })
+
   it('should have a parameter that is a user id', () => {
     expect(sleep.userID).to.equal(2)
   })
+
   it('should have a method that calculates the average sleep quality for all users', () => {
     expect(sleep.getTotalAvgSleepQuality()).to.equal(3.11)
   })
