@@ -31,34 +31,25 @@
     <main>
       <section class="data">
           <p id="sleep">Sleep</p>
-        <div class="dropdown-content hidden">
-          <div>
-            <section id="daily-sleep-quality-data">
-              <p></p>
+        <div class="data-display">
+          <div class="data-container">
+            <section id="daily-sleep-data container">
+              <p id="daily-sleep">daily</p>
+              <div class="chart-container">
+                <canvas id="daily-sleep-quality-chart"></canvas>
+                <canvas id="daily-sleep-quantity-chart"></canvas>
+              </div>
             </section>
-            <section id="daily-sleep-quantity-data">
-              <p></p>
+            <section class="weekly-view container">
+              <p id="weekly-sleep">weekly</p>
+              <div class="chart-container">
+                <canvas id="weekly-sleep-quality-chart"></canvas>
+                <canvas id="weekly-sleep-quantity-chart"></canvas>
+              </div>
             </section>
-            <p id="weekly-sleep"></p>
-            <section class="weekly-view">
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-              <p class="weekly-sleep-quality-data"></p>
-            </section>
-            <section class="weekly-view">
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-              <p class="weekly-sleep-quantity-data"></p>
-            </section>
-          </div>
+            <section class="container" id="avg-sleep-data-display">
+          </section>
+        </div>
         </div>
       </section>
       <secton class="data">
