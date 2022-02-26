@@ -1,6 +1,7 @@
-const userDataURL = "https://fitlit-api.herokuapp.com/api/v1/users";
-const sleepDataURL = "https://fitlit-api.herokuapp.com/api/v1/sleep";
-const hydrationDataURL = "https://fitlit-api.herokuapp.com/api/v1/hydration";
+const userDataURL = "http://localhost:3001/api/v1/users";
+const sleepDataURL = "http://localhost:3001/api/v1/sleep";
+const hydrationDataURL = "http://localhost:3001/api/v1/hydration";
+const activityDataURL = "http://localhost:3001/api/v1/activity"
 
 const fetchData = (url) => { return fetch(url).then(response => {
     if (!response.ok) {
@@ -13,4 +14,4 @@ const fetchData = (url) => { return fetch(url).then(response => {
     })
 }
 
-export {fetchData, userDataURL, sleepDataURL, hydrationDataURL}
+export {fetchData, userDataURL, sleepDataURL, hydrationDataURL, activityDataURL}
