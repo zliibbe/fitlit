@@ -1,19 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/user-icon.png';
-import {fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
-//imports
+import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
@@ -21,14 +8,12 @@ import Hydration from './Hydration';
 import Sleep from './Sleep';
 import {dailyHydration, weeklyHydration, dailySleepQual, dailySleepQuan, weeklySleepQual, weeklySleepQuan} from './Chart.js'
 
-//=====================================================
 //variable initiation
 let allUsers;
 let hydrationUser;
 let ourUser;
 let ourUserID;
 let sleepUser;
-
 
 //querySelectors
 let userInfoCard = document.querySelector('.user');
@@ -46,9 +31,7 @@ let hydrationTitle = document.querySelector('#hydration');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 let avgSleepDisplay = document.querySelector('#avg-sleep-data-display')
 
-
 //functions
-
 const getRandomNumber = (num) => {
     return Math.floor(Math.random() * num);
 }
@@ -61,9 +44,8 @@ const addDataToCharts = (chart, label, data) => {
     chart.update();
 }
 
-
-const fetchData = (id) => {
-  return Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+const getTheData = (id) => {
+  return Promise.all([fetchData(userDataURL), fetchData(sleepDataURL), fetchData(hydrationDataURL)])
   .then(data => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
@@ -78,7 +60,7 @@ const fetchData = (id) => {
 
 //Data/DOM; initial function on Load
 const loadUserInfo = () => {
-  fetchData(getRandomNumber(50));
+  getTheData(getRandomNumber(50));
 }
 
 //DOM
@@ -140,10 +122,3 @@ const infoButton = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
-
-
-/*
-For your user (or any user you choose), add:
-
-A display to show how much water they have consumed today (these displays are often called “widgets” in the FE tech world)
-A display to show much water they have consumed each day over the course of the latest week*/

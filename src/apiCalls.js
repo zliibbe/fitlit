@@ -1,17 +1,16 @@
-// Your fetch requests will live here!
+const userDataURL = "https://fitlit-api.herokuapp.com/api/v1/users";
+const sleepDataURL = "https://fitlit-api.herokuapp.com/api/v1/sleep";
+const hydrationDataURL = "https://fitlit-api.herokuapp.com/api/v1/hydration";
 
+const fetchData = (url) => { return fetch(url).then(response => {
+    if (!response.ok) {
+        throw new Error('Error with requesting information.');
+      } else {
+       return response.json();
+      }
+    }).catch(error => {
+        console.warn(error)
+    })
+}
 
-const fetchUserData = () => {
-  return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-  .then(response => response.json())}
-
-const fetchSleepData = () => {
-  return fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
-  .then(response => response.json())}
-
-const fetchHydrationData = () => {
-  return fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
-  .then(response => response.json())}
-
-
-export {fetchUserData, fetchSleepData, fetchHydrationData};
+export {fetchData, userDataURL, sleepDataURL, hydrationDataURL}
