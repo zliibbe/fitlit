@@ -3,31 +3,34 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>HealthDash</title>
   </head>
   <body>
     <nav>
       <h1>HealthDash</h1>
       <section class="user">
-        <img src="./images/user-icon.png" alt="User Icon">
+        <img src="./images/user-icon.png" class="user-icon" alt="User Icon">
         <p id="user-name">Hi:  </p>
         <p id="user-daily-step-goal">Daily Step Goal:  </p>
-        <p id="step-goal-comparison">vs. all Users:  </p>
+        <p id="step-goal-comparison">Average User Step Goal:  </p>
         <section class="dropdown">
           <button id="more-info">...</button>
           <div class="dropdown-content hidden" id="info-dropdown">
-            <p id="user-id">id: </p>
+            <p id="user-id">Id: </p>
             <p id="user-address">Address: </p>
             <p id="user-email">Email: </p>
             <p id="user-stride-length">Stride Length: </p>
-            <p id="user-friends">Friends: </p>
+            <p id="user-friends">Friend IDs: </p>
           </div>
         </section>
       </section>
     </nav>
     <main>
-      <section class="dropdown">
-        <p id="sleep">Sleep</p>
+      <section class="data">
+          <p id="sleep">Sleep</p>
         <div class="dropdown-content hidden">
           <div>
             <section id="daily-sleep-quality-data">
@@ -36,8 +39,8 @@
             <section id="daily-sleep-quantity-data">
               <p></p>
             </section>
-            <p id="weekly-sleep">weekly</p>
-            <section class="weekl-view">
+            <p id="weekly-sleep"></p>
+            <section class="weekly-view">
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
@@ -46,7 +49,7 @@
               <p class="weekly-sleep-quality-data"></p>
               <p class="weekly-sleep-quality-data"></p>
             </section>
-            <section class="week-view">
+            <section class="weekly-view">
               <p class="weekly-sleep-quantity-data"></p>
               <p class="weekly-sleep-quantity-data"></p>
               <p class="weekly-sleep-quantity-data"></p>
@@ -58,16 +61,16 @@
           </div>
         </div>
       </section>
-      <secton class="dropdown">
-        <p id="hydration">Hydration</p>
-        <div class="dropdown-content hidden" id="hydrationDropdown">
-          <div class="dropdown-container">
+      <secton class="data">
+          <p id="hydration">Hydration</p>
+        <div class="data-display">
+          <div class="data-container">
             <section class="daily-hydration container">
               <form>
                 <label for="daily-water">Daily Water</label>
                 <input type="date" id="daily-water" name="daily-water">
               </form>
-              <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+              <div class="chart-container">
                 <canvas id="daily-hydration-chart"></canvas>
               </div>
             </section>
@@ -76,12 +79,12 @@
                 <label for="daily-water">Weekly Water</label>
                 <input type="date" id="daily-water" name="daily-water">
               </form>
-              <div class="chart-container" style="position: relative; height:10vh; width:20vw">
+              <div class="chart-container">
                 <canvas id="weekly-hydration-chart"></canvas>
               </div>
             </section>
             <section class="average-hydration container">
-              <p id="all-time-average-hydration">average</p>
+              <p id="all-time-average-hydration">All-Time Average Oz Per Day</p>
               <p id="all-time-average-hydration-data"> </p>
             </section>
           </div>

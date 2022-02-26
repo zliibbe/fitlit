@@ -43,7 +43,6 @@ let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
-let hydrationDropdown = document.querySelector('#hydrationDropdown');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 let avgSleepDisplay = document.querySelector('#avg-sleep-data-display')
 
@@ -84,7 +83,7 @@ const loadUserInfo = () => {
 
 //DOM
 const generateUserInfoCard = (user) => {
-    userName.innerText += user.getFirstName();
+    userName.innerText = user.getFirstName();
     userDailyStepGoal.innerText += user.dailyStepGoal;
     userID.innerText += user.id;
     userAddress.innerText += user.address;
@@ -115,7 +114,7 @@ const generateSleepCard = (sleep, user) => {
   let avgSleepQuality = user.getAvgAllTimeSleepQuality(sleep);
   let avgSleepQuantity = user.getTotalAvgDailyHoursSlept(sleep);
   addDataToCharts(dailySleepQual, [day], [dailySleepQuality]);
-  addDataToCharts(dailySleepQuan, [day], [weeklySleepQuantity]);
+  addDataToCharts(dailySleepQuan, [day], [dailyHoursSlept]);
   addDataToCharts(weeklySleepQual, week, weeklySleepQuality);
   addDataToCharts(weeklySleepQuan, week, weeklySleepQuantity);
   avgSleepDisplay.innerHTML = `
@@ -141,7 +140,7 @@ const infoButton = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', infoButton)
-hydrationTitle.addEventListener('click', displayHydration);
+
 
 /*
 For your user (or any user you choose), add:
