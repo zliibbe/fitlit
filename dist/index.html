@@ -30,6 +30,7 @@
       </section>
     </nav>
     <main>
+      <button class="add-new-data">Add New Data</button>
       <section class="data">
           <p id="sleep">Sleep</p>
         <div class="data-display">
@@ -50,21 +51,20 @@
             </section>
             <section class="container" id="avg-sleep-data-display">
             </section>
-            
           </div>
+          <section class="sleep-form hidden">
+            <label for>Add night of sleep:</label>
+            <form>
+              <label for="date">Date:</label>
+                <input type="date">
+              <label for="hoursSlept">Hours Slept:</label>
+                <input type="number">
+              <label for="sleepQuality">Quality of Sleep:</label>
+                <input type="number">
+                <input type="submit" class="submit-sleep">
+            </form>
+          </section>
         </div>
-        <section class="sleep-form">
-          <label for>Add night of sleep:</label>
-          <form>
-            <label for="date">Date:</label>
-              <input type="date">
-            <label for="hoursSlept">Hours Slept:</label>
-              <input type="number">
-            <label for="sleepQuality">Quality of Sleep:</label>
-              <input type="number">
-              <input type="submit">
-          </form>
-        </section>
       </section>
       <secton class="data">
           <p id="hydration">Hydration</p>
@@ -93,6 +93,17 @@
               <p id="all-time-average-hydration-data"> </p>
             </section>
           </div>
+          <section class="hydration-form hidden">
+            <label for>Add day of hydration:
+              <form>
+                <label for="date">Date:
+                  <input type="date"></label>
+                <label for="numOunces">Number of Ounces:
+                  <input type="number"></label>
+                <input type="submit" class="submit-hydration">
+            </label>
+            </form>
+          </section>
         </div>
       </section>
     </main>
