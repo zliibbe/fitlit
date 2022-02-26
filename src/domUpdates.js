@@ -13,12 +13,10 @@ let userAddress = document.querySelector('#user-address');
 let userEmail = document.querySelector('#user-email');
 let userStrideLength = document.querySelector('#user-stride-length');
 let userFriends = document.querySelector('#user-friends');
-let moreInfoBtn = document.querySelector('#more-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
-let hydrationTitle = document.querySelector('#hydration');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
-let avgSleepDisplay = document.querySelector('#avg-sleep-data-display')
+let avgSleepDisplay = document.querySelector('#avg-sleep-data-display');
 
 
 let domUpdates = {
@@ -60,7 +58,14 @@ let domUpdates = {
       <p>Average Hours Slept per Night</p>
       <p>${avgSleepQuantity}</p>
     `
+  },
+  infoButton() {
+      toggleHidden(infoDropdownContent);
   }
+}
+
+const toggleHidden = (element) => {
+    element.classList.toggle("hidden");
 }
 
 const addDataToCharts = (chart, label, data) => {
