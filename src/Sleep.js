@@ -1,14 +1,14 @@
 class Sleep{
   constructor(data, id) {
     this.allData = data;
-    this.sleepData = data.filter((data) => {
-      if(data.userID === id) {
+    this.dataByID = data.filter((data) => {
+      if (data.userID === id) {
         return data
       }
     })
     this.userID = id;
   }
-  totalAvgSleepQuality() {
+  getTotalAvgSleepQuality() {
     let totalSleepQuality =  this.allData.reduce((acc, data) => {
       acc += data.sleepQuality
       return acc

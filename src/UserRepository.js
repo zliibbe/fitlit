@@ -8,7 +8,9 @@ class UserRepository {
   }
 
   getUserId(id) {
-    return this.users.find(user => user.id)
+    return this.users.find(user => {
+      return user.id === id
+    })
   }
 
   getAvgStepGoal() {

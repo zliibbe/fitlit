@@ -75,7 +75,7 @@ describe('User', () => {
   })
 
   it('should have a method that returns a users first name only', function() {
-    expect(user.returnFirstName()).to.equal('Luisa');
+    expect(user.getFirstName()).to.equal('Luisa');
   })
 
   describe('Hydration', () => {
@@ -97,15 +97,15 @@ describe('User', () => {
   })
 
     it('should have a method that calculates total average water consumed', function() {
-      expect(user.totalAvgWater(hydration)).to.equal(67)
+      expect(user.getTotalAvgWater(hydration)).to.equal(67)
     })
 
     it('should have a method that returns the daily water consumed for a specific day', function() {
-      expect(user.dailyWater(hydration, "2019/06/15")).to.equal(37)
+      expect(user.getDailyWater(hydration, "2019/06/15")).to.equal(37)
     })
 
     it('should have a method that calculated weekly water consumed', function() {
-      expect(user.weeklyWater(hydration, ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])).to.eql([37, 75, 47, 85, 42, 87, 94])
+      expect(user.getWeeklyWater(hydration, ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])).to.eql([37, 75, 47, 85, 42, 87, 94])
     })
   })
   describe('Sleep', () => {
@@ -134,27 +134,27 @@ describe('User', () => {
     });
 
     it('should have a method that returns the total daily hours slept', () => {
-      expect(user.totalAvgDailyHoursSlept(sleep.sleepData, 2)).to.equal(7.1)
+      expect(user.getTotalAvgDailyHoursSlept(sleep)).to.equal(7.1)
     })
 
     it('should have a method that calculates the average sleep quality per day over all time', () => {
-      expect(user.avgAllTimeSleepQuality(sleep.sleepData)).to.equal(3.61)
+      expect(user.getAvgAllTimeSleepQuality(sleep)).to.equal(3.61)
     })
 
     it('should have a method that returns the sleep quality for a specific day', () => {
-      expect(user.dailySleepQuality(sleep.sleepData, "2019/06/15")).to.equal(4.7)
+      expect(user.getDailySleepQuality(sleep, "2019/06/15")).to.equal(4.7)
     })
 
     it('should have a method that returns the hours slept for a specific day', () => {
-      expect(user.dailyHoursSlept(sleep.sleepData, "2019/06/15")).to.equal(7)
+      expect(user.getDailyHoursSlept(sleep, "2019/06/15")).to.equal(7)
     })
 
     it('should have a method that displays the daily hours slept in a week', () => {
-      expect(user.getSevenDaysOfSleepQuantity(sleep.sleepData, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"])).to.eql([7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8])
+      expect(user.getSevenDaysOfSleepQuantity(sleep, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"])).to.eql([7, 7.5, 5.7, 10.8, 9.6, 4.3, 4.8])
     })
 
     it('should have a method that displays the daily quality of hours slept in a week', () => {
-      expect(user.getSevenDaysOfSleepQuality(sleep.sleepData, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"], 2)).to.eql([4.7, 3.8, 3, 3.2, 2.5, 4.8, 3.3])
+      expect(user.getSevenDaysOfSleepQuality(sleep, ["2019/06/15", "2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"], 2)).to.eql([4.7, 3.8, 3, 3.2, 2.5, 4.8, 3.3])
     })
   })
 })
