@@ -1,5 +1,6 @@
 body, html {
   background-image: linear-gradient(to top, #80b6bf59 0%, #6c848700 99%, #ffffff82 100%);
+  /* background-image:  url("https://unsplash.com/photos/en-5xoYnjTE"); */
   background-repeat: no-repeat;
   height: 120vh;
   width: 100%;
@@ -35,6 +36,7 @@ nav {
   padding: 0.5rem, 0.8rem;
   display: flex;
   align-items: center;
+  border-radius: 15px;
 }
 
 nav .dropdown-content {
@@ -84,6 +86,14 @@ main {
 
 .hidden {
   display: none !important;
+}
+
+.add-new-data {
+  display: flex;
+  align-items: center;
+  width: 8rem;
+  padding: 10px 15px;
+  margin: 15px;
 }
 
 .dropdown {
@@ -144,6 +154,13 @@ main {
   align-items: center;
   justify-content: space-between;
 }
+
+.sleep-form, .hydration-form {
+  margin: 1.4em;
+  display: flex;
+  align-items: center;
+}
+
 .average-hydration {
   height: 20vh;
 }
@@ -152,4 +169,24 @@ main {
   position: relative;
   height:40vh;
   width:30vw
+}
+
+/* ***** add data forms ***** */
+
+.data-entry-forms {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.sleep-form, .hydration-form, .activity-form  {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  width: 80vw;
+  height: 35vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
