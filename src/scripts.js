@@ -1,8 +1,6 @@
 import './css/styles.css';
 import './images/user-icon.png';
-import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
-import userData from './data/users';
-import User from './User';
+import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, activityDataURL} from './apiCalls.js';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
@@ -12,7 +10,6 @@ import {dailyHydration, weeklyHydration, dailySleepQual, dailySleepQuan, weeklyS
 let allUsers;
 let hydrationUser;
 let ourUser;
-let ourUserID;
 let sleepUser;
 
 //querySelectors
