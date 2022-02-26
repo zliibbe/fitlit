@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/user-icon.png';
-import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, activityDataURL} from './apiCalls.js';
+import {fetchData, postData} from './apiCalls.js';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
@@ -42,7 +42,7 @@ const addDataToCharts = (chart, label, data) => {
 }
 
 const getTheData = (id) => {
-  return Promise.all([fetchData(userDataURL), fetchData(sleepDataURL), fetchData(hydrationDataURL)])
+  return Promise.all([fetchData('users'), fetchData('sleep'), fetchData('hydration')])
   .then(data => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
