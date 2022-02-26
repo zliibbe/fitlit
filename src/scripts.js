@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/user-icon.png';
-import {fetchData, userDataURL, sleepDataURL, hydrationDataURL} from './apiCalls.js';
+import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, fetchUserData, fetchSleepData, fetchHydrationData} from './apiCalls.js';
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
