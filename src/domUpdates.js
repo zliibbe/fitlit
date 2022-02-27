@@ -17,6 +17,10 @@ let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let allTimeAvgHydrationData = document.querySelector('#all-time-average-hydration-data')
 let avgSleepDisplay = document.querySelector('#avg-sleep-data-display');
+let dataCards = document.querySelectorAll('.data');
+let addNewDataBtn = document.querySelector('.add-new-data');
+let dataEntryForms = document.querySelector('.data-entry-forms');
+let backToMainBtn = document.querySelector('.back-to-main');
 
 
 let domUpdates = {
@@ -61,6 +65,14 @@ let domUpdates = {
   },
   infoButton() {
       toggleHidden(infoDropdownContent);
+  },
+  toggleDataDisplay() {
+    dataCards.forEach(card => {
+      toggleHidden(card)
+    })
+    toggleHidden(addNewDataBtn);
+    toggleHidden(dataEntryForms);
+    toggleHidden(backToMainBtn);
   }
 }
 
@@ -75,5 +87,6 @@ const addDataToCharts = (chart, label, data) => {
     });
     chart.update();
 }
+
 
 export {domUpdates};
