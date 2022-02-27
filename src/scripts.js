@@ -21,7 +21,7 @@ let userAddress = document.querySelector('#user-address');
 let userEmail = document.querySelector('#user-email');
 let userStrideLength = document.querySelector('#user-stride-length');
 let userFriends = document.querySelector('#user-friends');
-let moreInfoBtn = document.querySelector('#more-info');
+let moreUserInfoBtn = document.querySelector('#more-user-info');
 let infoDropdownContent = document.querySelector('#info-dropdown');
 let stepGoalComparison = document.querySelector('#step-goal-comparison');
 let hydrationTitle = document.querySelector('#hydration');
@@ -104,10 +104,6 @@ const generateSleepCard = (sleep, user) => {
   `
 }
 
-const displayHydration = () => {
-    toggleHidden(hydrationDropdown);
-}
-
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
 }
@@ -118,4 +114,4 @@ const infoButton = () => {
 
 //eventListeners
 window.addEventListener('load', loadUserInfo)
-moreInfoBtn.addEventListener('click', infoButton)
+moreUserInfoBtn.addEventListener('click', infoButton)
