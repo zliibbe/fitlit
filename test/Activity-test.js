@@ -7,6 +7,7 @@ describe('Activity', () => {
   let activity;
   let testActivity;
   let testActivitybyUserID;
+  let dataByDate;
 
   beforeEach(() => {
     testActivitybyUserID = [
@@ -19,6 +20,7 @@ describe('Activity', () => {
       { "userID": 1, "date": "2019/06/21", "numSteps": 6760, "minutesActive": 135, "flightsOfStairs": 6 },
       { "userID": 1, "date": "2019/06/22", "numSteps": 10289, "minutesActive": 119, "flightsOfStairs": 6 }
     ];
+
     testActivity = [
       {"userID": 2, "date": "2019/06/15", "numSteps": 4294, "minutesActive": 138, "flightsOfStairs": 10},
       {"userID": 2, "date": "2019/06/16", "numSteps": 4112, "minutesActive": 220, "flightsOfStairs": 37},
@@ -36,8 +38,14 @@ describe('Activity', () => {
       {"userID": 1, "date": "2019/06/20", "numSteps": 14478, "minutesActive": 140, "flightsOfStairs": 12 },
       {"userID": 1, "date": "2019/06/21", "numSteps": 6760, "minutesActive": 135, "flightsOfStairs": 6 },
       {"userID": 1, "date": "2019/06/22", "numSteps": 10289, "minutesActive": 119, "flightsOfStairs": 6 }
-    ];
-    acticity = new Activity(testActivity, 1);
+      ];
+
+    dataByDate = [
+      {"userID": 2, "date": "2019/06/16", "numSteps": 4112, "minutesActive": 220, "flightsOfStairs": 37},
+      {"userID": 1, "date": "2019/06/16", "numSteps": 6637, "minutesActive": 175, "flightsOfStairs": 36 }
+      ];
+
+    activity = new Activity(testActivity, 1);
   });
 
   it('Should be a function', () => {
@@ -52,6 +60,10 @@ describe('Activity', () => {
     expect(activity.allData).to.eql(testActivity)
   })
 
+  it('Should be able to filter data for all users by a specific date', () => {
+    expect(activity.filterByDate("2019/06/16")).to.eql(dataByDate)
+  })
+
   it('Should take in a parameter for a user id', () => {
     expect(activity.userID).to.equal(1)
   })
@@ -61,7 +73,7 @@ describe('Activity', () => {
   })
 
   it('Should have a method to calculate the average number of steps taken for a specific date for all users', () => {
-    expect(activity.getAvgStepsbyDate("2019/06/15")).to.equal(3935.5)
+    expect(activity.getAvgStepsbyDate("2019/06/15")).to.equal(3936)
   })
 
   it('Should have a method to calculate the average minutes active on a specific date for all users', () => {
