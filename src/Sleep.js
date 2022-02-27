@@ -5,7 +5,7 @@ class Sleep{
       if (data.userID === id) {
         return data
       }
-    })
+    });
     this.userID = id;
   }
   getTotalAvgSleepQuality() {
@@ -17,4 +17,4 @@ class Sleep{
   }
 }
 
-export default Sleep
+export default Sleep;
