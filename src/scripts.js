@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/user-icon.png';
-import {fetchData, userDataURL, sleepDataURL, hydrationDataURL, activityDataURL} from './apiCalls.js';
+import {fetchData, postData} from './apiCalls.js';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
@@ -21,7 +21,7 @@ const getRandomNumber = (num) => {
 }
 
 const getTheData = (id) => {
-  return Promise.all([fetchData(userDataURL), fetchData(sleepDataURL), fetchData(hydrationDataURL)])
+  return Promise.all([fetchData('users'), fetchData('sleep'), fetchData('hydration')])
   .then(data => {
     allUsers = new UserRepository(data[0].userData);
     hydrationUser = new Hydration(data[2].hydrationData, id);
@@ -39,8 +39,7 @@ const loadUserInfo = () => {
   getTheData(getRandomNumber(50));
 }
 
-
-
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', domUpdates.infoButton)
+

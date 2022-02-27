@@ -1,14 +1,19 @@
 body, html {
   background-image: linear-gradient(to top, #80b6bf59 0%, #6c848700 99%, #ffffff82 100%);
+  /* background-image:  url("https://unsplash.com/photos/en-5xoYnjTE"); */
   background-repeat: no-repeat;
-  height: 120vh;
+  height: 135vh;
   width: 100%;
   font-family: 'Lato', sans-serif;
 }
 
 /* ***** nav ***** */
+.error-display {
+  color: red;
+}
+
 nav {
-  margin-bottom: 5%;
+  margin-bottom: 12%;
 }
 
 .user {
@@ -27,10 +32,11 @@ nav {
   align-items: center;
 }
 
-#more-info {
+#more-user-info {
   padding: 0.5rem, 0.8rem;
   display: flex;
   align-items: center;
+  border-radius: 15px;
 }
 
 nav .dropdown-content {
@@ -54,20 +60,20 @@ nav .dropdown-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  margin: 1rem 1rem;
+  position: relative;
 }
 
-button {
+/* button {
   display: flex;
   align-items: baseline;
-}
+} */
 
 /* ***** main ***** */
-
 main {
   margin-top: 2%;
   width: 100%;
-  height: 70%;
+  height: 90%;
   display:flex;
   flex-direction: column;
   align-content: center;
@@ -75,11 +81,32 @@ main {
   /* overflow: scroll; */
 }
 
+.new-data-btn-container {
+  display:flex;
+  justify-content: center;
+}
+
+.add-new-data {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4em;
+  position: relative;
+  z-index: 2;
+  width: 20%;
+}
 
 /* ***** dropdown ***** */
 
 .hidden {
   display: none !important;
+}
+
+.add-new-data {
+  display: flex;
+  align-items: center;
+  width: 8rem;
+  padding: 10px 15px;
+  margin: 15px;
 }
 
 .dropdown {
@@ -140,6 +167,13 @@ main {
   align-items: center;
   justify-content: space-between;
 }
+
+.sleep-form, .hydration-form {
+  margin: 1.4em;
+  display: flex;
+  align-items: center;
+}
+
 .average-hydration {
   height: 20vh;
 }
@@ -148,4 +182,55 @@ main {
   position: relative;
   height:40vh;
   width:30vw
+}
+
+/* ***** add data forms ***** */
+
+.data-entry-forms {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.sleep-form, .hydration-form, .activity-form  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 5%;
+  padding: 1.2em;
+  background-color: #f1f1f1;
+  width: 30vw;
+  height: 30vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+label {
+  width: 50%;
+  padding: 5px 5px 5px 0px;
+}
+
+input {
+  width:50%
+}
+
+.submit-sleep, .submit-hydration, .submit-activity {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 35%;
+}
+
+.back-to-main {
+  margin-left: 45%;
+  width: 20vh;
+  height: 5vh;
+  justify-content: center;
+  align-content: center;
+  flex-flow: row wrap;
 }

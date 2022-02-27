@@ -6,18 +6,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <title>HealthDash</title>
+    <title>FitLit</title>
   </head>
   <body>
     <nav>
-      <h1>HealthDash</h1>
+      <h1>FitLit</h1>
+      <p class="error-display"></p>
       <section class="user">
         <img src="./images/user-icon.png" class="user-icon" alt="User Icon">
         <p id="user-name">Hi:  </p>
         <p id="user-daily-step-goal">Daily Step Goal:  </p>
         <p id="step-goal-comparison">Average User Step Goal:  </p>
         <section class="dropdown">
-          <button id="more-info">...</button>
+          <button id="more-user-info">...</button>
           <div class="dropdown-content hidden" id="info-dropdown">
             <p id="user-id">Id: </p>
             <p id="user-address">Address: </p>
@@ -29,6 +30,9 @@
       </section>
     </nav>
     <main>
+      <section class="new-data-btn-container">
+        <button class="add-new-data">Enter New Data</button>
+      </section>
       <section class="data">
           <p id="sleep">Sleep</p>
         <div class="data-display">
@@ -48,8 +52,8 @@
               </div>
             </section>
             <section class="container" id="avg-sleep-data-display">
-          </section>
-        </div>
+            </section>
+          </div>
         </div>
       </section>
       <secton class="data">
@@ -81,8 +85,48 @@
           </div>
         </div>
       </section>
-    </main>
+      <!-- Data Entry Forms-->
+      <section class="data-entry-forms">
 
+        <section class="sleep-form">
+          <h2>Add night of sleep:</h2>
+          <form class="sleep-inputs">
+            <label for="date">Date:</label>
+              <input type="date">
+            <label for="hoursSlept">Hours Slept:</label>
+              <input type="number">
+            <label for="sleepQuality">Quality of Sleep:</label>
+              <input type="number">
+              <input type="submit" class="submit-sleep">
+          </form>
+        </section>
+      
+        <section class="hydration-form">
+          <h2>Add day of hydration:</h2>
+            <form class="hydration-inputs">
+              <label for="date">Date:</label>
+                <input type="date">
+              <label for="numOunces">Number of Ounces:</label>
+                <input type="number">
+              <input type="submit" class="submit-hydration">
+          </form>
+        </section>
+
+        <section class="activity-form">
+          <h2>Add activity:</h2>
+            <form class="activity-inputs">
+              <label for="date">Date:</label>
+                <input type="date">
+              <label for="flightsOfStairs">Flights of stairs:</label>
+                <input type="number">
+              <label for="minutesActive">Minutes Active:</label>
+                <input type="number">
+                <input type="submit" class="submit-activity">
+            </form>
+        </section>
+      </section>
+      <button class="back-to-main">Back to Main</button>
+    </main>
 
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
