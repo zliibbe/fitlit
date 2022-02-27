@@ -13,7 +13,9 @@ let hydrationUser;
 let ourUser;
 let sleepUser;
 
-let moreInfoBtn = document.querySelector('#more-info');
+let moreInfoBtn = document.querySelector('#more-user-info');
+let enterNewDataBtn = document.querySelector('.add-new-data');
+let backToMainBtn = document.querySelector('.back-to-main')
 
 //functions
 const getRandomNumber = (num) => {
@@ -42,4 +44,6 @@ const loadUserInfo = () => {
 //eventListeners
 window.addEventListener('load', loadUserInfo)
 moreInfoBtn.addEventListener('click', domUpdates.infoButton)
+enterNewDataBtn.addEventListener('click', domUpdates.toggleDataDisplay)
+backToMainBtn.addEventListener('click', domUpdates.toggleDataDisplay)
 
