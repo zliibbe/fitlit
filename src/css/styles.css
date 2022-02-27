@@ -13,7 +13,7 @@ body, html {
 }
 
 nav {
-  margin-bottom: 12%;
+  /* margin-bottom: 12%; */
 }
 
 .user {
@@ -189,6 +189,8 @@ main {
 .data-entry-forms {
   display: flex;
   flex-flow: row nowrap;
+  align-items: flex-start;
+  position: absolute;
 }
 
 .sleep-form, .hydration-form, .activity-form  {
