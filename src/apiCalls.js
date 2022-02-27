@@ -1,8 +1,3 @@
-// const userDataURL = "http://localhost:3001/api/v1/users";
-// const sleepDataURL = "http://localhost:3001/api/v1/sleep";
-// const hydrationDataURL = "http://localhost:3001/api/v1/hydration";
-// const activityDataURL = "http://localhost:3001/api/v1/activity"
-
 let errorMsg = document.querySelector('.error-display');
 
 const fetchData = (dataType) => { return fetch(`http://localhost:3001/api/v1/${dataType}`).then(response => {
