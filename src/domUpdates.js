@@ -35,8 +35,8 @@ let domUpdates = {
       stepGoalComparison.innerText += userRepo.getAvgStepGoal();
   },
   generateHydrationCard(hydration, user) {
-    let day = "2019/06/15"
-    let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+    let day = getDay(hydration)
+    let week = getWeek(hydration)
     let dailyWater = user.getDailyWater(hydration, day)
     let weeklyWater = user.getWeeklyWater(hydration, week)
     allTimeAvgHydrationData.innerText = user.getTotalAvgWater(hydration);
@@ -44,8 +44,8 @@ let domUpdates = {
     addDataToCharts(weeklyHydration, week, weeklyWater)
   },
   generateSleepCard(sleep, user) {
-    let day = "2019/06/15"
-    let week = ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+    let day = getDay(sleep)
+    let week = getWeek(sleep)
     let dailySleepQuality = user.getDailySleepQuality(sleep, day);
     let dailyHoursSlept = user.getDailyHoursSlept(sleep, day);
     let weeklySleepQuality = user.getSevenDaysOfSleepQuality(sleep, week);
@@ -78,6 +78,18 @@ let domUpdates = {
 
 const toggleHidden = (element) => {
     element.classList.toggle("hidden");
+}
+
+const getDay = (data) => {
+  return data.dataByID[data.dataByID.length-1].date
+}
+
+const getWeek = (data) => {
+  let week = []
+   for (let i = data.dataByID.length; i > data.dataByID.length-8; i--) {
+    week.unshift(data.dataByID[i-1].date)
+  }
+  return week
 }
 
 const addDataToCharts = (chart, label, data) => {
