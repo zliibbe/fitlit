@@ -46,7 +46,6 @@ const getTheData = (id) => {
 
 const postNewSleepData = (e) => {
   e.preventDefault();
-  // const formData  = new FormData(e.target);
   const newSleepData = {
     userID: ourUser.id,
     date: sleepDateInput.value.replaceAll('-', '/'),
@@ -59,7 +58,6 @@ const postNewSleepData = (e) => {
 
 const postNewHydroData = (e) => {
   e.preventDefault();
-  // const formData  = new FormData(e.target);
   const newHydroData = {
     userID: ourUser.id,
     date: hydroDateInput.value.replaceAll('-', '/'),
