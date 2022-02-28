@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -38,17 +38,17 @@
         <div class="data-display">
           <div class="data-container">
             <section id="daily-sleep-data container">
-              <p id="daily-sleep">daily</p>
+              <p id="daily-sleep">Daily</p>
               <div class="chart-container">
-                <canvas id="daily-sleep-quality-chart"></canvas>
-                <canvas id="daily-sleep-quantity-chart"></canvas>
+                <canvas id="daily-sleep-quality-chart" tabindex="0"></canvas>
+                <canvas id="daily-sleep-quantity-chart" tabindex="0"></canvas>
               </div>
             </section>
             <section class="weekly-view container">
-              <p id="weekly-sleep">weekly</p>
+              <p id="weekly-sleep">Weekly</p>
               <div class="chart-container">
-                <canvas id="weekly-sleep-quality-chart"></canvas>
-                <canvas id="weekly-sleep-quantity-chart"></canvas>
+                <canvas id="weekly-sleep-quality-chart" tabindex="0"></canvas>
+                <canvas id="weekly-sleep-quantity-chart" tabindex="0"></canvas>
               </div>
             </section>
             <section class="container" id="avg-sleep-data-display">
@@ -56,26 +56,20 @@
           </div>
         </div>
       </section>
-      <secton class="data">
+      <section class="data">
           <p id="hydration">Hydration</p>
         <div class="data-display">
           <div class="data-container">
             <section class="daily-hydration container">
-              <form>
-                <label for="daily-water">Daily Water</label>
-                <input type="date" id="daily-water" name="daily-water">
-              </form>
+              <p id="daily-hydration">Daily</p>
               <div class="chart-container">
-                <canvas id="daily-hydration-chart"></canvas>
+                <canvas id="daily-hydration-chart" tabindex="0"></canvas>
               </div>
             </section>
             <section class="weekly-hydration container">
-              <form>
-                <label for="daily-water">Weekly Water</label>
-                <input type="date" id="daily-water" name="daily-water">
-              </form>
+              <p id="weekly-hydration">Weekly</p>
               <div class="chart-container">
-                <canvas id="weekly-hydration-chart"></canvas>
+                <canvas id="weekly-hydration-chart" tabindex="0"></canvas>
               </div>
             </section>
             <section class="average-hydration container">
@@ -86,49 +80,32 @@
         </div>
       </section>
       <!-- Data Entry Forms-->
-      <section class="data-entry-forms">
-
+      <section class="data-entry-forms hidden">
         <section class="sleep-form">
           <h2>Add night of sleep:</h2>
           <form class="sleep-inputs">
             <label for="date">Date:</label>
-              <input type="date">
+              <input type="date" class="sleep-date-input" required>
             <label for="hoursSlept">Hours Slept:</label>
-              <input type="number">
+              <input type="number" class="sleep-hours-input" min="0" max ="24" required>
             <label for="sleepQuality">Quality of Sleep:</label>
-              <input type="number">
+              <input type="number" class="sleep-quality-input" min="0" max="5" required>
               <input type="submit" class="submit-sleep">
           </form>
         </section>
-      
         <section class="hydration-form">
           <h2>Add day of hydration:</h2>
             <form class="hydration-inputs">
               <label for="date">Date:</label>
-                <input type="date">
+                <input type="date" class= "hydration-date-input" required>
               <label for="numOunces">Number of Ounces:</label>
-                <input type="number">
+                <input type="number" class= "hydration-num-oz-input" min="0" required>
               <input type="submit" class="submit-hydration">
           </form>
         </section>
-
-        <section class="activity-form">
-          <h2>Add activity:</h2>
-            <form class="activity-inputs">
-              <label for="date">Date:</label>
-                <input type="date">
-              <label for="flightsOfStairs">Flights of stairs:</label>
-                <input type="number">
-              <label for="minutesActive">Minutes Active:</label>
-                <input type="number">
-                <input type="submit" class="submit-activity">
-            </form>
-        </section>
       </section>
-      <button class="back-to-main">Back to Main</button>
+        <button class="back-to-main hidden">Back to Main</button>
     </main>
-
-
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
