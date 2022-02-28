@@ -104,10 +104,9 @@ main {
   display: inline-block;
 }
 
-.dropdown :hover {
+button:hover {
   cursor: pointer;
 }
-
 
 .dropdown-content {
   transform: translate(50px, 5px);
