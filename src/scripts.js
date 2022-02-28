@@ -52,7 +52,11 @@ const postNewSleepData = (e) => {
     hoursSlept: parseInt(sleepHoursInput.value),
     sleepQuality: parseInt(sleepQualityInput.value),
   }
-  postData("sleep", newSleepData);
+  let newSleep;
+  Promise.all([postData("sleep", newSleepData)])
+  .then(() => fetchData("sleep"))
+  .then((data) => newSleep = new Sleep(data.sleepData, ourUser.id))
+  .then(() => domUpdates.generateSleepCard(newSleep, ourUser))
   e.target.reset();
 }
 
@@ -63,7 +67,11 @@ const postNewHydroData = (e) => {
     date: hydroDateInput.value.replaceAll('-', '/'),
     numOunces: parseInt(hydroNumOzInput.value)
   }
-  postData("hydration", newHydroData);
+  let newHydration;
+  Promise.all([postData("hydration", newHydroData)])
+  .then(() => fetchData("hydration"))
+  .then(data => newHydration = new Hydration(data.hydrationData, ourUser.id))
+  .then(() => domUpdates.generateHydrationCard(newHydration, ourUser));
   e.target.reset();
 }
 
