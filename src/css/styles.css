@@ -76,34 +76,10 @@ main {
 
 .add-new-data {
   display: flex;
-  justify-content: center;
-  margin-bottom: 4em;
-  position: relative;
-  z-index: 2;
-  width: 20%;
-}
-
-/* ***** dropdown ***** */
-
-.hidden {
-  display: none !important;
-}
-
-.add-new-data {
-  display: flex;
   align-items: center;
   width: 8rem;
   padding: 10px 15px;
   margin: 15px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown :hover {
-  cursor: pointer;
 }
 
 .data {
@@ -116,6 +92,22 @@ main {
   font-size: 2em;
   flex-direction: row;
 }
+
+/* ***** dropdown ***** */
+
+.hidden {
+  display: none !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown :hover {
+  cursor: pointer;
+}
+
 
 .dropdown-content {
   transform: translate(50px, 5px);
