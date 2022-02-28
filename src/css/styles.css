@@ -11,10 +11,6 @@ body, html {
   color: red;
 }
 
-nav {
-  /* margin-bottom: 12%; */
-}
-
 .user {
   display: flex;
   flex-direction: row-reverse;
@@ -42,7 +38,6 @@ nav .dropdown-content {
   min-width: 20vw;
   min-height: 15vh;
 }
-
 
 #user-id, #user-address, #user-email, #user-stride-length, #user-friends {
   margin: 1%
