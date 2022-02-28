@@ -82,5 +82,16 @@ class User {
       return userObj.sleepQuality
     })
   }
+  getMilesByDate(activity, date) {
+    let dailySteps = activity.dataByID.find(datum => {
+      if(datum.date === date) {
+        return datum
+      }
+    })
+    return (((dailySteps.numSteps * this.strideLength) / 5280) * 100) /100
+  }
+  // getMinutesActiveByDate(activity, date) {
+  //   let dailyMinutesActive =
+  // }
 }
 export default User;

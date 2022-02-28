@@ -207,23 +207,23 @@ describe('User', () => {
     })
 
     it('Should return the miles a user has walked for a specific date', () => {
-      expect(user.getMilesByDate("2019/06/15")).to.equal(15381.1)
+      expect(user.getMilesByDate(activity, "2019/06/15")).to.equal(2.91)
     })
     it('Should should be able to tell how many minutes a user was active for a specific date', () => {
-      expect(user.getMinutesActiveByDate("2019/06/21")).to.equal(135)
+      expect(user.getMinutesActiveByDate(activity, "2019/06/21")).to.equal(135)
     })
     it('Should return the average minutes active for a given week', () => {
-      expect(user.getAvgMinutesActiveByWeek(dates)).to.equal(1193)
+      expect(user.getAvgMinutesActiveByWeek(activity, dates)).to.equal(1193)
     })
     it('Should tell a user if they met their step goal for a specific day', () => {
-      expect(user.getStepGoalMet("2019/06/17")).to.be(true)
-      expect(user.getStepGoalMet("2019/06/21")).to.be(false)
+      expect(user.getStepGoalMet(activity, "2019/06/17")).to.be(true)
+      expect(user.getStepGoalMet(activity, "2019/06/21")).to.be(false)
     })
     it('Should find all the days a user met their step goal', () => {
-      expect(user.getAllStepGoalsMet(testActivitybyUserID)).to.eql(["2019/06/17", "2019/06/20", "2019/06/22"])
+      expect(user.getAllStepGoalsMet(activity)).to.eql(["2019/06/17", "2019/06/20", "2019/06/22"])
     })
     it('Should be able to find the day with the highest number of stairs climbed', () => {
-      expect(user.getStairClimbingRecord(testActivitybyUserID)).to.equal("2019/06/16")
+      expect(user.getStairClimbingRecord(activity)).to.equal("2019/06/16")
     })
   })
 })
