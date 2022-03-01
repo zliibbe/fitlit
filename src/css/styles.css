@@ -1,19 +1,19 @@
 body, html {
   background-image: linear-gradient(to top, #80b6bf59 0%, #6c848700 99%, #ffffff82 100%);
-  /* background-image:  url("https://unsplash.com/photos/en-5xoYnjTE"); */
   background-repeat: no-repeat;
   height: 135vh;
   width: 100%;
   font-family: 'Lato', sans-serif;
 }
 
-/* ***** nav ***** */
-.error-display {
-  color: red;
+button:hover {
+  cursor: pointer;
 }
 
-nav {
-  /* margin-bottom: 12%; */
+/* ***** nav ***** */
+
+.error-display {
+  color: red;
 }
 
 .user {
@@ -44,7 +44,6 @@ nav .dropdown-content {
   min-height: 15vh;
 }
 
-
 #user-id, #user-address, #user-email, #user-stride-length, #user-friends {
   margin: 1%
 }
@@ -64,69 +63,15 @@ nav .dropdown-content {
   position: relative;
 }
 
-/* button {
-  display: flex;
-  align-items: baseline;
-} */
-
-/* ***** main ***** */
-main {
-  margin-top: 2%;
-  width: 100%;
-  height: 90%;
-  display:flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: space-around;
-  /* overflow: scroll; */
-}
-
-.new-data-btn-container {
-  display:flex;
-  justify-content: center;
-}
-
-.add-new-data {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 4em;
-  position: relative;
-  z-index: 2;
-  width: 20%;
-}
-
 /* ***** dropdown ***** */
 
 .hidden {
   display: none !important;
 }
 
-.add-new-data {
-  display: flex;
-  align-items: center;
-  width: 8rem;
-  padding: 10px 15px;
-  margin: 15px;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
-}
-
-.dropdown :hover {
-  cursor: pointer;
-}
-
-.data {
-  display: flex;
-  flex-direction: column;
-}
-
-#sleep, #hydration {
-  margin: .5em 0.3em 1em 1em;
-  font-size: 2em;
-  flex-direction: row;
 }
 
 .dropdown-content {
@@ -140,6 +85,42 @@ main {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   padding: 10px
+}
+
+/* ***** main ***** */
+
+main {
+  margin-top: 2%;
+  width: 100%;
+  height: 90%;
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.new-data-btn-container {
+  display:flex;
+  justify-content: center;
+}
+
+.add-new-data {
+  display: flex;
+  align-items: center;
+  width: 8rem;
+  padding: 10px 15px;
+  margin: 15px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+#sleep, #hydration {
+  margin: .5em 0.3em 1em 1em;
+  font-size: 2em;
+  flex-direction: row;
 }
 
 .data-display {
@@ -168,12 +149,6 @@ main {
   justify-content: space-between;
 }
 
-.sleep-form, .hydration-form {
-  margin: 1.4em;
-  display: flex;
-  align-items: center;
-}
-
 .average-hydration {
   height: 20vh;
 }
@@ -185,6 +160,12 @@ main {
 }
 
 /* ***** add data forms ***** */
+
+.sleep-form, .hydration-form {
+  margin: 1.4em;
+  display: flex;
+  align-items: center;
+}
 
 .data-entry-forms {
   display: flex;
