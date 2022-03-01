@@ -6,7 +6,12 @@ body, html {
   font-family: 'Lato', sans-serif;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* ***** nav ***** */
+
 .error-display {
   color: red;
 }
@@ -58,7 +63,32 @@ nav .dropdown-content {
   position: relative;
 }
 
+/* ***** dropdown ***** */
+
+.hidden {
+  display: none !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  transform: translate(50px, 5px);
+  display: flex;
+  flex-flow: column wrap;
+  position:relative;
+  background-color: #f1f1f1;
+  min-width: 80vw;
+  min-height: 40vh;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px
+}
+
 /* ***** main ***** */
+
 main {
   margin-top: 2%;
   width: 100%;
@@ -93,34 +123,6 @@ main {
   flex-direction: row;
 }
 
-/* ***** dropdown ***** */
-
-.hidden {
-  display: none !important;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.dropdown-content {
-  transform: translate(50px, 5px);
-  display: flex;
-  flex-flow: column wrap;
-  position:relative;
-  background-color: #f1f1f1;
-  min-width: 80vw;
-  min-height: 40vh;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  padding: 10px
-}
-
 .data-display {
   display: block;
   position: relative;
@@ -147,12 +149,6 @@ button:hover {
   justify-content: space-between;
 }
 
-.sleep-form, .hydration-form {
-  margin: 1.4em;
-  display: flex;
-  align-items: center;
-}
-
 .average-hydration {
   height: 20vh;
 }
@@ -164,6 +160,12 @@ button:hover {
 }
 
 /* ***** add data forms ***** */
+
+.sleep-form, .hydration-form {
+  margin: 1.4em;
+  display: flex;
+  align-items: center;
+}
 
 .data-entry-forms {
   display: flex;
