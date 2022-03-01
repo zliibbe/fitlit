@@ -38,7 +38,6 @@ const getTheData = (id) => {
     sleepUser = new Sleep(data[1].sleepData, id);
     ourUser = allUsers.getUserId(id);
    })
-  //DOM
   .then(() => domUpdates.generateUserInfoCard(ourUser, allUsers))
   .then(() => domUpdates.generateHydrationCard(hydrationUser, ourUser))
   .then(() => domUpdates.generateSleepCard(sleepUser, ourUser))
@@ -75,7 +74,6 @@ const postNewHydroData = (e) => {
   e.target.reset();
 }
 
-//Data/DOM; initial function on Load
 const loadUserInfo = () => {
   getTheData(getRandomNumber(50));
 }
